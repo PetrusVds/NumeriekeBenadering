@@ -1,0 +1,107 @@
+\begin{theo}[Orthogonale en orthonormale basissen]{theo:orthogonale_orthonormale_basissen}
+    We spreken van een orthogonale, respectievelijk orthonormale basis als de basisvectoren $\{a_1, \ldots, a_n\}$ orthogonaal, respectievelijk orthonormaal zijn. Als een basis niet orthogonaal is, spreken we van een scheve basis.
+\end{theo}
+
+\begin{theo}[Grammatrix]{theo:grammatrix}
+    Voor een basis $\{a_1, \ldots, a_n\}$ van deelruimte $\mathcal{D}$ en twee vectoren $v, w \in \mathcal{D}$ ontbonden als
+    \begin{equation*}
+            v = \sum_{i=1}^{n} \alpha_i a_i, \
+            w = \sum_{i=1}^{n} \beta_i a_i
+    \end{equation*}
+    geldt dat het inwendig product ($\langle v, w \rangle = v^*w$) van $v$ en $w$ gelijk is aan
+    \begin{align*}
+        \langle v, w \rangle 
+            = \left( \sum_{i=1}^{n} \alpha_i a_i^* \right)\left( \sum_{i=1}^{n} \beta_i a_i \right) 
+            = 
+                \begin{bmatrix} \alpha_1 & \cdots & \alpha_n \end{bmatrix} 
+                \underbrace{\begin{bmatrix} \langle a_1, a_1 \rangle & \cdots & \langle a_1, a_n \rangle \\ \vdots & \ddots & \vdots \\ \langle a_n, a_1 \rangle & \cdots & \langle a_n, a_n \rangle \end{bmatrix}}_{G} 
+                \begin{bmatrix} \beta_1 \\ \vdots \\ \beta_n \end{bmatrix}
+    \end{align*}
+    waarbij deze G de zogenaamde grammatrix is horende bij de basis $\{a_1, \ldots, a_n\}$. 
+\end{theo}
+
+\begin{pro}[Grammatrix]{pro:grammatrix}
+    \begin{itemize}
+        \item Is de basis orthogonaal, dan is de grammatrix diagonaal.
+        \item Is de basis orthonormaal, dan is de grammatrix de eenheidsmatrix.
+    \end{itemize}
+\end{pro}
+
+\begin{theo}[Projector]{theo:projector}
+    Een projector is een matrix $P \in \mathbb{C}^{m \times m}$ die idempotent is, dit is $P^2 = P$. De meetkundige betekenis is als volgt. Matrix $P$ projecteert een vector op de ruimte $\mathcal{R}(P)$, waarbij de richting bepaald wordt door de nullspace $\mathcal{N}(P)$. 
+\end{theo}
+
+\begin{app}[Projector]{app:projector}
+    Stel $v \in \mathbb{C}^m$ een willekeurige vector en $P \in \mathbb{C}^{m \times m}$ een projector, dan is $Pv \in \mathcal{R}(P)$ olgens de definitie van het bereik, en is $(I - P)v \in \mathcal{N}(P)$, omdat 
+    \begin{equation*}
+        P(I - P)v = (P - P^2)v \overset{\text{idempotent}}{=} (P-P)v = 0
+    \end{equation*}
+    We kunnen dus $v$ ontbinden in componenten volgens $\mathcal{R}(P)$ en $\mathcal{N}(P)$ als
+    \begin{equation*}
+        v = Pv + (I - P)v
+    \end{equation*}
+    Deze ontbinding is uniek.
+\end{app}
+
+\begin{pro}[Projector]{pro:projector}
+    \begin{itemize}
+        \item Als $v \in \mathcal{R}(P)$, dan is $Pv = v$.
+        \item Er geldt dat $\mathcal{R}(P) \cap \mathcal{N}(P) = \{0\}$.
+        \item Er geldt dat $\text{dim}(\mathcal{R}(P)) + \text{dim}(\mathcal{N}(P)) = m$.
+        \item De ontbinding in componenten volgens $\mathcal{R}(P)$ en $\mathcal{N}(P)$ is uniek.
+    \end{itemize}
+\end{pro}
+
+\begin{prf}[Projector]{prf:projector}
+    \begin{itemize}
+        \item Als $v \in \mathcal{R}(P)$, dan $\exists u: v = Pu$, en dus is $Pv = P^2u = Pu = v$.
+        \item Stel $x \in \mathcal{R}(P)$ en $x \in \mathcal{N}(P)$. Er volgt dat $x = Px = 0$.
+        \item Dit volgt uit de eerste dimensiestelling en vorige eigenschap.
+        \item Stel $v = x_1 + y_1 = x_2 + y_2$, met $x_1, x_2 \in \mathcal{R}(P)$ en $y_1, y_2 \in \mathcal{N}(P)$. Er geldt voor $i \in {1,2}$ dat $Pv = Px_i + Py_i = x_i$. Hieruit volgt dat $x_1 = x_2$.
+    \end{itemize}
+\end{prf}
+
+\begin{theo}[Complementaire projector]{theo:complementaire_projector}
+    Stel $P$ een projector, dan is $\tilde{P} = I - P$ ook een projector. Hierbij geldt:
+    \begin{equation*}
+        \mathcal{R}(P) = \mathcal{N}(I-P) = \mathcal{N}(\tilde{P})  \quad \text{en} \quad \mathcal{N}(P) = \mathcal{R}(I-P) = \mathcal{R}(\tilde{P}).
+    \end{equation*}
+    De ontbinding kan geschreven worden als 
+    \begin{equation*}
+        v = \underbrace{(I - \tilde{P})v}_{\in \mathcal{R}(P)} + \underbrace{\tilde{P}v}_{\in \mathcal{N}(P)}
+    \end{equation*}
+    Matrix $\tilde{P}$ projecteert dus op $\mathcal{N}(P)$ waarbij de richting bepaald wordt door $\mathcal{R}(P)$. Dit is de \textbf{complementaire projector} van $P$.
+\end{theo}
+
+\newpage
+
+\begin{theo}[Orthogonale projector]{theo:orthogonale_projector}
+    Een projector $P$ is orthogonaal indien $\mathcal{R}(P)$ en $\mathcal{N}(P)$ onderling orthogonale ruimte zijn. Een prokector die niet orthogonaal is, noemen we een scheve projector.
+\end{theo}
+
+\begin{pro}[Orthogonale projector]{pro:orthogonale_projector}
+    Een projector $P$ is orthogonaal als en alleen als $P = P^*$.
+\end{pro}
+
+\begin{prf}[Orthogonale projector]{prf:orthogonale_projector}
+    ``$\Rightarrow$'': Beschouw een orthonormale basis $\{q_1, \ldots, q_n\}$ van $\mathcal{R}(P)$ en een orthonormale basis $\{q_{n+1}, \ldots, q_m\}$ van $\mathcal{N}(P)$. Omdat volgens de definitie beide ruimten orthogonaal zijn, volgt dat
+    \begin{equation*}
+        Q = \begin{bmatrix} q_1 & \cdots & q_n & q_{n+1} & \cdots & q_m \end{bmatrix}
+    \end{equation*}
+     een unitaire matrix is. We verkrijgen:
+    \begin{equation*}
+        PQ = \begin{bmatrix} q_1 & \cdots & q_n &0 & \cdots & 0 \end{bmatrix} \ \Rightarrow \ Q^*PQ = \begin{bmatrix} I_n & 0 \\ 0 & 0 \end{bmatrix}.
+    \end{equation*}
+    Vermits $Q^*PQ$ dus reëel is, geldt:
+    \begin{equation*}
+        Q^*PQ = (Q^*PQ)^* = Q^*P^*Q
+    \end{equation*}
+    waaruit het gestelde volgt. \\
+
+    ``$\Leftarrow$'': Neem willekeurige $x = Pu \in \mathcal{R}(P)$ en $y \in \mathcal{N}(P)$. Dan is:
+    \begin{equation*}
+        \langle x, y \rangle = x^*y = (Pu)^*y = u^*P^*vy= u^*Py = 0.
+    \end{equation*}
+    De ruimten $\mathcal{R}(P)$ en $\mathcal{N}(P)$ zijn dus orthogonaal.
+    \vspace{-0.3cm}
+\end{prf}

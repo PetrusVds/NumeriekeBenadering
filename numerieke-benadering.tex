@@ -1,0 +1,188 @@
+\documentclass{exam} % Allows insertion of \question and generally looks nicer
+
+%------------------------------------------------
+%	            PACKAGES AND CONFIG
+%------------------------------------------------
+\usepackage{graphicx} % Required for inserting images
+\usepackage{amsmath}
+\usepackage{titling}
+\usepackage{caption}
+\usepackage{amsfonts}
+\usepackage{amsthm}
+\usepackage{hyperref}
+\usepackage[dutch]{babel}
+\counterwithin*{equation}{section}% Reset equation at \section
+\counterwithin*{equation}{subsection}% Reset equation at \subsection
+\counterwithin*{equation}{subsubsection}% Reset equation at \subsubsection
+\setlength\parindent{0pt}
+\hypersetup{
+    colorlinks,
+    citecolor=black,
+    filecolor=black,
+    linkcolor=black,
+    urlcolor=black
+}
+
+%------------------------------------------------
+%	                COMMANDS
+%------------------------------------------------
+
+\renewcommand\maketitlehooka{\null\mbox{}\vfill}
+\renewcommand\maketitlehookd{\vfill\null}
+\newcommand{\RomanNumeralCaps}[1]{\MakeUppercase{\romannumeral #1}}
+\input{Commands/Setup}
+
+% Custom subsection numbering
+\renewcommand{\thesubsection}{\arabic{subsection}}
+
+% Command to add unnumbered sections to ToC
+\newcommand{\sectionWithToC}[1]{
+    \section*{#1} % Unnumbered section
+    \addcontentsline{toc}{section}{#1} % Add it to ToC
+}
+
+% Custom intro page without section numbering
+\newcommand{\introPage}[1]{
+    \vspace*{\fill}
+    \begin{center}
+        \sectionWithToC{#1}
+    \end{center}
+    \vspace*{\fill}
+}
+
+
+%------------------------------------------------
+%	            START OF DOCUMENT
+%------------------------------------------------
+
+\title{Numerieke Benadering}
+\author{Pieter Vanderschueren}
+\date{Academiejaar 2024-2025}
+
+\begin{document}
+
+\begin{titlingpage}
+\maketitle
+\end{titlingpage}
+
+\newpage
+
+%------------------------------------------------
+%	              INTRODUCTION
+%------------------------------------------------
+
+% \introPage{Inleiding}
+
+%------------------------------------------------
+%	           TABLE OF CONTENTS
+%------------------------------------------------
+
+\newpage
+
+\tableofcontents
+
+\newpage
+
+%------------------------------------------------
+%	       LINEAIRE BENADERINGSPROBLEMEN
+%------------------------------------------------
+
+\introPage{Lineaire Benaderingsproblemen}
+
+\newpage
+
+\subsection{Benadering van vectoren}
+
+\vspace{0.5cm}
+
+\input{Chapters/LineaireBenaderingsproblemen/vectoren.tex}
+
+\newpage
+
+\subsection{Benadering van functies}
+
+\vspace{0.5cm}
+
+\input{Chapters/LineaireBenaderingsproblemen/functies.tex}
+
+\newpage
+
+\subsection{Benadering door middel van veeltermen}
+
+\vspace{0.5cm}
+
+\input{Chapters/LineaireBenaderingsproblemen/veeltermen.tex}
+
+\newpage
+
+\subsection{Discrete benadering op basis van meetdata}
+
+\vspace{0.5cm}
+
+\input{Chapters/LineaireBenaderingsproblemen/meetdata.tex}
+
+\newpage
+
+\subsection{Regularisatietechnieken}
+
+\vspace{0.5cm}
+
+\input{Chapters/LineaireBenaderingsproblemen/regularisatie.tex}
+
+\newpage
+
+%------------------------------------------------
+%	       DATA, GRAFEN EN EIGENWAARDEN
+%------------------------------------------------
+
+\introPage{Data, Grafen en Eigenwaarden}
+
+\newpage
+
+\subsection{Grafen en eigenwaarden in datawetenschappen}
+
+\vspace{0.5cm}
+
+\input{Chapters/DataGrafenEigenwaarden/grafen.tex}
+
+\newpage
+
+\subsection{Eigenwaardenalgoritmes}
+
+\vspace{0.5cm}
+
+\input{Chapters/DataGrafenEigenwaarden/eigenwaardenalgoritmes.tex}
+
+\newpage
+
+%------------------------------------------------
+%	    NIET-LINEAIRE BENADERINGSPROBLEMEN
+%------------------------------------------------
+
+\introPage{Niet-lineaire Benaderingsproblemen}
+
+\subsection{Niet-lineaire benaderingsproblemen}
+
+\vspace{0.5cm}
+
+\input{Chapters/NietLineaireBenaderingsproblemen/NietLineaire.tex}
+
+\newpage
+
+\subsection{Optimalisatie-algoritmes}
+
+\vspace{0.5cm}
+
+\input{Chapters/NietLineaireBenaderingsproblemen/Optimalisatie.tex}
+
+\newpage
+
+\subsection{Ijle representatie en benaderingen}
+
+\vspace{0.5cm}
+
+\input{Chapters/NietLineaireBenaderingsproblemen/IjleRepresentatie.tex}
+
+\newpage
+
+\end{document}
