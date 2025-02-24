@@ -1,3 +1,7 @@
+\subsubsection{Terminologie}
+
+\vspace{0.5cm}
+
 \begin{theo}[Orthogonale en orthonormale basissen]{theo:orthogonale_orthonormale_basissen}
     We spreken van een orthogonale, respectievelijk orthonormale basis als de basisvectoren $\{a_1, \ldots, a_n\}$ orthogonaal, respectievelijk orthonormaal zijn. Als een basis niet orthogonaal is, spreken we van een scheve basis.
 \end{theo}
@@ -31,6 +35,8 @@
     Een projector is een matrix $P \in \mathbb{C}^{m \times m}$ die idempotent is, dit is $P^2 = P$. De meetkundige betekenis is als volgt. Matrix $P$ projecteert een vector op de ruimte $\mathcal{R}(P)$, waarbij de richting bepaald wordt door de nullspace $\mathcal{N}(P)$. 
 \end{theo}
 
+\newpage
+
 \begin{app}[Projector]{app:projector}
     Stel $v \in \mathbb{C}^m$ een willekeurige vector en $P \in \mathbb{C}^{m \times m}$ een projector, dan is $Pv \in \mathcal{R}(P)$ olgens de definitie van het bereik, en is $(I - P)v \in \mathcal{N}(P)$, omdat 
     \begin{equation*}
@@ -62,7 +68,7 @@
 \end{prf}
 
 \begin{theo}[Complementaire projector]{theo:complementaire_projector}
-    Stel $P$ een projector, dan is $\tilde{P} = I - P$ ook een projector. Hierbij geldt:
+    Stel $P$ een projector, dan is $\tilde{P} = I - P$ de \textbf{complementaire projector} van $P$. Hierbij geldt:
     \begin{equation*}
         \mathcal{R}(P) = \mathcal{N}(I-P) = \mathcal{N}(\tilde{P})  \quad \text{en} \quad \mathcal{N}(P) = \mathcal{R}(I-P) = \mathcal{R}(\tilde{P}).
     \end{equation*}
@@ -70,10 +76,8 @@
     \begin{equation*}
         v = \underbrace{(I - \tilde{P})v}_{\in \mathcal{R}(P)} + \underbrace{\tilde{P}v}_{\in \mathcal{N}(P)}
     \end{equation*}
-    Matrix $\tilde{P}$ projecteert dus op $\mathcal{N}(P)$ waarbij de richting bepaald wordt door $\mathcal{R}(P)$. Dit is de \textbf{complementaire projector} van $P$.
+    Matrix $\tilde{P}$ projecteert dus op $\mathcal{N}(P)$ waarbij de richting bepaald wordt door $\mathcal{R}(P)$.
 \end{theo}
-
-\newpage
 
 \begin{theo}[Orthogonale projector]{theo:orthogonale_projector}
     Een projector $P$ is orthogonaal indien $\mathcal{R}(P)$ en $\mathcal{N}(P)$ onderling orthogonale ruimte zijn. Een prokector die niet orthogonaal is, noemen we een scheve projector.
@@ -236,3 +240,67 @@
     \end{tcolorbox}
     \vspace{-0.3cm}
 \end{alg}
+
+\subsubsection{Beste benadering van een vector in een deelruimte}
+
+\vspace{0.5cm}
+
+\begin{lem}[Beste benaderingsstelling]{lem:beste_benadering}
+    \vspace{-0.1cm}
+    Een vector $\hat{y}$ is een beste benadering in deelruimte $\mathcal{D}$ voor $b$ als $b - \hat{y}$ orthogonaal is ten opzichte van $\mathcal{D}$.
+    \vspace{-0.1cm}
+\end{lem}
+
+\begin{prf}[Beste benaderingsstelling]{prf:beste_benadering}
+    \vspace{-0.1cm}
+    Neem een willekeurige $y \in \mathcal{D}$. Vermits $y-\hat{y} \in \mathcal{D}$ en dus orthogonal is ten opzichte van $b - \hat{y}$ geldt, volgens de stelling van Pythagoras:
+    \begin{equation*}
+        \|b - y\|_2^2 = \| b - \hat{y}\|_2^2 + \| \hat{y} - y\|_2^2 \geq \| b - \hat{y}\|_2^2,
+    \end{equation*}
+    m\@.a\@.w\@. $y$ benadert $b$ niet beter dan $\hat{y}$.
+    \vspace{-0.3cm}
+\end{prf}
+
+\begin{lem}[Orthogonale projectiestelling]{lem:orthogonale_projectiestelling}
+    \vspace{-0.1cm}
+    De beste benadering in deelruimte $\mathcal{D}$ voor vector $b$ bestaat en is uniek. Ze wordt gegeven door de orthogonale projectie van $b$ op $\mathcal{D}$, namelijk:
+    \begin{equation*}
+        \hat{y} = P_{\mathcal{D}}y
+    \end{equation*}
+    met $P_{\mathcal{D}}$ de orthogonale projector op $\mathcal{D}$.
+    \vspace{-0.1cm}
+\end{lem}
+
+\begin{prf}[Orthogonale projectiestelling]{prf:orthogonale_projectiestelling}
+    \vspace{-0.1cm}
+    Per definitie van een projector, kan $b$ ontbonden worden als
+    \begin{equation*}
+        b = \underbrace{P_{\mathcal{D}}b}_{\in \mathcal{R}(P_{\mathcal{D}})} + \underbrace{(I - P_{\mathcal{D}})b}_{\in \mathcal{N}(P_{\mathcal{D}})}
+    \end{equation*}
+    waaruit volgt dat $b - \hat{y} = b - P_{\mathcal{D}}b \in \mathcal{N}(P_{\mathcal{D}}) = \mathcal{R}(P_{\mathcal{D}^\perp})$. Volgens de beste benaderingsstelling (Stelling~\ref{lem:beste_benadering}) is $\hat{y}$ een beste benadering. De uniciteit volgt uit het voorgaande bewijs (Bewijs~\ref{prf:beste_benadering}).
+    % \vspace{-0.3cm}
+    \vspace{-0.1cm}
+\end{prf}
+
+\begin{lem}[Normaalstelsel]{lem:Normaalstelsel}
+    \vspace{-0.1cm}
+    Een vector $\hat{x}$ is een oplossing van het kleinste-kwadratenprobleem, namelijk
+    \begin{equation*}
+        \min_{x \in \mathbb{C}^n} \|Ax-b\|_2,
+    \end{equation*}
+    als en alleen als $x = \hat{x}$ voldoet aan het zogenaamde normaalstelsel:
+    \begin{equation*}
+        A^*Ax = A^*b.
+    \end{equation*}
+    \vspace{-0.7cm}
+\end{lem}
+
+\begin{prf}[Normaalstelsel]{prf:Normaalstelsel}
+    ``$\Rightarrow$'': Veronderstel dat $A\hat{x} = \hat{y}$, met $\hat{y}$ gegeven door $\hat{y} = P_{\mathcal{D}}y$. We weten dat $(b-A\hat{x}) \perp \mathcal{D} = <a_1,\ldots,a_n>$ waaruit volgt
+    \begin{equation*}
+        \forall i \in [1,n]: \ \langle a_i, (b-A\hat{x}) \rangle = 0 \ \Leftrightarrow \ a_i^*(b-A\hat{x}) = 0 
+    \end{equation*}
+    wat equivalent is aan het gestelde in matrixvorm. \\
+
+    ``$\Leftarrow$'': De gelijkheid kan geschreven worden als $A^*(A\hat{x}-b)$, wat impliceert $(A\hat{x}-b) \perp \mathcal{D}$ en dus is $\hat{x}$ de beste benadering.
+\end{prf}
