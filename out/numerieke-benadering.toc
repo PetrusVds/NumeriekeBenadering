@@ -5,13 +5,15 @@
 \contentsline {subsubsection}{\numberline {1.2}QR-factorisatie}{6}{subsubsection.0.1.2}%
 \contentsline {subsubsection}{\numberline {1.3}Beste benadering van een vector in een deelruimte}{8}{subsubsection.0.1.3}%
 \contentsline {subsection}{\numberline {2}Benadering van functies}{9}{subsection.0.2}%
-\contentsline {subsection}{\numberline {3}Benadering door middel van veeltermen}{9}{subsection.0.3}%
-\contentsline {subsection}{\numberline {4}Discrete benadering op basis van meetdata}{9}{subsection.0.4}%
-\contentsline {subsection}{\numberline {5}Regularisatietechnieken}{9}{subsection.0.5}%
-\contentsline {section}{Data, Grafen en Eigenwaarden}{10}{section*.3}%
-\contentsline {subsection}{\numberline {6}Grafen en eigenwaarden in datawetenschappen}{11}{subsection.0.6}%
-\contentsline {subsection}{\numberline {7}Eigenwaardenalgoritmes}{11}{subsection.0.7}%
-\contentsline {section}{Niet-lineaire Benaderingsproblemen}{12}{section*.4}%
-\contentsline {subsection}{\numberline {8}Niet-lineaire benaderingsproblemen}{13}{subsection.0.8}%
-\contentsline {subsection}{\numberline {9}Optimalisatie-algoritmes}{13}{subsection.0.9}%
-\contentsline {subsection}{\numberline {10}Ijle representatie en benaderingen}{13}{subsection.0.10}%
+\contentsline {subsubsection}{\numberline {2.1}Metrische ruimte}{9}{subsubsection.0.2.1}%
+\contentsline {subsubsection}{\numberline {2.2}Vectorruimte}{10}{subsubsection.0.2.2}%
+\contentsline {subsection}{\numberline {3}Benadering door middel van veeltermen}{12}{subsection.0.3}%
+\contentsline {subsection}{\numberline {4}Discrete benadering op basis van meetdata}{12}{subsection.0.4}%
+\contentsline {subsection}{\numberline {5}Regularisatietechnieken}{12}{subsection.0.5}%
+\contentsline {section}{Data, Grafen en Eigenwaarden}{13}{section*.3}%
+\contentsline {subsection}{\numberline {6}Grafen en eigenwaarden in datawetenschappen}{14}{subsection.0.6}%
+\contentsline {subsection}{\numberline {7}Eigenwaardenalgoritmes}{14}{subsection.0.7}%
+\contentsline {section}{Niet-lineaire Benaderingsproblemen}{15}{section*.4}%
+\contentsline {subsection}{\numberline {8}Niet-lineaire benaderingsproblemen}{16}{subsection.0.8}%
+\contentsline {subsection}{\numberline {9}Optimalisatie-algoritmes}{16}{subsection.0.9}%
+\contentsline {subsection}{\numberline {10}Ijle representatie en benaderingen}{16}{subsection.0.10}%

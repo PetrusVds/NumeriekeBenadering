@@ -1,5 +1,5 @@
 # Fdb version 4
-["pdflatex"] 1740404825 "/Users/pietervds/Homework/Master1/NumeriekeBenadering/Samenvatting/numerieke-benadering.tex" "out/numerieke-benadering.pdf" "numerieke-benadering" 1740404826 0
+["pdflatex"] 1740409511 "/Users/pietervds/Homework/Master1/NumeriekeBenadering/Samenvatting/numerieke-benadering.tex" "out/numerieke-benadering.pdf" "numerieke-benadering" 1740409512 0
   "/Users/pietervds/Homework/Master1/NumeriekeBenadering/Samenvatting/numerieke-benadering.tex" 1740404824 4184 9c808332085fb8a52347aeb30f4dde70 ""
   "/usr/local/texlive/2023/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc" 1136849721 2900 1537cc8184ad1792082cd229ecc269f4 ""
   "/usr/local/texlive/2023/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
@@ -202,7 +202,7 @@
   "/usr/local/texlive/2023/texmf.cnf" 1678822455 577 1b2b1af17af2508fb20dd85783af4050 ""
   "Chapters/DataGrafenEigenwaarden/eigenwaardenalgoritmes.tex" 1740232534 0 d41d8cd98f00b204e9800998ecf8427e ""
   "Chapters/DataGrafenEigenwaarden/grafen.tex" 1740232428 0 d41d8cd98f00b204e9800998ecf8427e ""
-  "Chapters/LineaireBenaderingsproblemen/functies.tex" 1740232322 0 d41d8cd98f00b204e9800998ecf8427e ""
+  "Chapters/LineaireBenaderingsproblemen/functies.tex" 1740409510 6430 a0af4b82be410dcdb50e7d4a23e9058d ""
   "Chapters/LineaireBenaderingsproblemen/meetdata.tex" 1740232386 0 d41d8cd98f00b204e9800998ecf8427e ""
   "Chapters/LineaireBenaderingsproblemen/regularisatie.tex" 1740232413 0 d41d8cd98f00b204e9800998ecf8427e ""
   "Chapters/LineaireBenaderingsproblemen/vectoren.tex" 1740404328 15063 0a866b513182bc655e449ada976752d2 ""
@@ -221,9 +221,9 @@
   "Commands/Vergelijking.tex" 1740233474 956 14844342893598e486aad12ea76efc38 ""
   "Commands/Voorbeeld.tex" 1740233473 946 e15cd9746587451930a79ea2faa227e3 ""
   "numerieke-benadering.tex" 1740404824 4184 9c808332085fb8a52347aeb30f4dde70 ""
-  "out/numerieke-benadering.aux" 1740404826 5893 7fe76d81eee75d1fb519e2a56e58715d "pdflatex"
-  "out/numerieke-benadering.out" 1740404826 3375 4067b6af26dbd1860df2244528d1f425 "pdflatex"
-  "out/numerieke-benadering.toc" 1740404826 1496 e787f7f802e8866b86d1f8d5217cd073 "pdflatex"
+  "out/numerieke-benadering.aux" 1740409512 7473 b5e4cfb2579a99d6aa9d1668d1315663 "pdflatex"
+  "out/numerieke-benadering.out" 1740409512 3654 48fc7be73b31d349d1eb290c5d73a048 "pdflatex"
+  "out/numerieke-benadering.toc" 1740409512 1676 a937282d9da8f78905d71da5d8f449ef "pdflatex"
   (generated)
   "out/numerieke-benadering.aux"
   "out/numerieke-benadering.log"
