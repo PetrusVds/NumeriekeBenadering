@@ -105,3 +105,134 @@
     De ruimten $\mathcal{R}(P)$ en $\mathcal{N}(P)$ zijn dus orthogonaal.
     \vspace{-0.3cm}
 \end{prf}
+
+\newpage
+
+\subsubsection{QR-factorisatie}
+
+\vspace{0.5cm}
+
+\begin{alg}[Gram-Schmidt orthogonalisatie]{alg:Gram-Schmidt}
+    \vspace{-0.3cm}
+    % \begin{minipage}{0.58\textwidth}
+    %     Vertrekkende van de kolommen van $A$ bepalen we de kolommen van $\hat{Q}$ en de kolommen van $\hat{R}$ in opeenvolgende stappen. In stap $j$ bepalen we de $j$-de kolom van $\hat{R}$.
+    %     \begin{itemize}
+    %         \item stap 1: $r_{11} = \|a_1\|_2$ en $q_1 = a_1 / r_{11}$.
+    %         \item stap $j$: Stel $q_1,q_2,\ldots,q_{j-1}$ en de $j-1$ eerste kolommen van $\hat{R}$ gekend. Dan is:
+    %         \begin{equation*}
+    %             a_j = \sum_{i=1}^{j} r_{ij} q_i.
+    %         \end{equation*}
+    %         Wegens de orthogonaliteit van vectoren $q_i$ geldt: $q_i^* a_j = r_{ij}$. Verder is:
+    %         \begin{equation*}
+    %             r_{ji}q_j = a_j - \sum_{i=1}^{j-1} r_{ij} q_i := v_j,
+    %         \end{equation*}
+    %         dus $q_j$ is gekend op een constante na en we weten dat $\|q_j\|_2 = 1$. We kiezen nu $r_{jj} = \|v_j\|_2$ en $q_j = v_j / r_{jj}$.
+    %     \end{itemize}
+    % \end{minipage}
+    % \begin{minipage}{0.4\textwidth}
+    \begin{tcolorbox}[colback=white, colframe=gray, arc=0mm] 
+        \begin{algorithmic}[1]
+        \For{$j = 1$ to $n$}
+            \State $v_j = a_j$
+            \For{$i = 1$ to $j - 1$}
+                \State $r_{ij} = q_i^* a_j$
+                \State $v_j = v_j - r_{ij} q_i$ \ $(= a_j - P_{<q_1,\ldots,q_{j-1}>} a_j)$
+            \EndFor
+            \State $r_{jj} = \|v_j\|_2$
+            \State $q_j = v_j / r_{jj}$
+        \EndFor
+        \end{algorithmic}
+    \end{tcolorbox}
+    % \end{minipage}
+    \vspace{-0.3cm}
+\end{alg}
+
+\begin{alg}[Gewijzigde Gram-Schmidt orthogonalisatie]{alg:gewijzigde_Gram-Schmidt}
+    \vspace{-0.3cm}
+    \begin{tcolorbox}[colback=white, colframe=gray, arc=0mm] 
+        \begin{algorithmic}[1]
+        \For{$j = 1$ to $n$}
+            \State $v_j = a_j$
+            \For{$i = 1$ to $j - 1$}
+                \State $r_{ij} = q_i^* \boldsymbol{v_j}$ \ ($a_j \ \rightarrow \ v_j$)
+                \State $v_j = v_j - r_{ij} q_i$ \ $(= (\mathbb{I} - P_{<q_{j - 1}>})\ldots(\mathbb{I} - P_{<q_{2}>})(\mathbb{I} - P_{<q_{1}>})a_j)$
+            \EndFor
+            \State $r_{jj} = \|v_j\|_2$
+            \State $q_j = v_j / r_{jj}$
+        \EndFor
+        \end{algorithmic}
+    \end{tcolorbox}
+    \vspace{-0.3cm}
+\end{alg}
+
+\begin{app}[Herorthogonalisatie van Gram-Schmidt]{app:herorthogonalisatie}
+    De Gram-Schmidt orthogonalisatie is numeriek instabiel. Dit kan verholpen worden door herorthogonalisatie, hieronder twee varianten waarvan de eerste de meest gebruikte is.
+    \begin{enumerate}
+        \item \textbf{Stapsgewijze variant}:    
+            \begin{tcolorbox}[colback=white, colframe=gray, arc=0mm] 
+                \begin{algorithmic}[1]
+                \State $v_j = a_j$
+                \For{$j = 1$ to $j-1$}
+                    \State $r_{ij} = q_i^* v_j$
+                    \State $v_j = v_j - r_{ij} q_i$
+                \EndFor
+                \State
+                \State $w_j = v_j$
+                \For{$i = 1$ to $j -1$}
+                    \State $s_{ij} = q_i^* w_j$
+                    \State $v_j = v_j - s_{ij} q_i$
+                    \State $r_{ij} = r_{ij} + s_{ij}$
+                \EndFor
+                \end{algorithmic}
+            \end{tcolorbox}
+        \item \textbf{Simultane variant}: Na het berekenen van de onvolledige QR-factorisatie, die resulteert in factoren $\hat{Q}_1$ en $\hat{R}_1$ wordt het algoritme opnieuw toegepast met als input de eerste factor, wat resulteert in $\hat{Q}_1 \approx \hat{Q}_2\hat{R}_2$. We bepalen dan $\hat{Q} = \hat{Q}_2$ en $\hat{R} = \hat{R}_2\hat{R}_1$. Bij het gewijzigde algoritme van Gram-Schmidt (Algoritme~\ref{alg:gewijzigde_Gram-Schmidt}) is dit meestal voldoende om orthogonaliteit van de kolommen van $\hat{Q}$ te garanderen, bij het standaard algoritme (Algoritme~\ref{alg:Gram-Schmidt}) is soms meermaals herhalen van deze procedure noodzakelijk.
+    \end{enumerate}
+\end{app}
+
+\begin{alg}[QR-facrotisatie met Givens-rotaties]{alg:Givens}
+    \vspace{-0.3cm}
+    \begin{tcolorbox}[colback=white, colframe=gray, arc=0mm] 
+        \begin{algorithmic}[1]
+            \State $Q = I$, $R = A$
+            \For{$j = 1$ to $n$}
+                \For{$i = m$ downto $j+1$}
+                    \State $c = \frac{r_{(i-1)j}}{\sqrt{r_{(i-1)j}^2 + r_{ij}^2}}$,\ $s = \frac{r_{ij}}{\sqrt{r_{(i-1)j}^2 + r_{ij}^2}}$
+                    \State $r_{ij} = 0$, \ $r_{(i-1)j} = \sqrt{r_{(i-1)j}^2 + r_{ij}^2}$
+                    \For{$k = j+1$ to $n$}
+                       \State $\bmatrix r_{(i-1)k} \\ r_{ik} \endbmatrix = \begin{bmatrix} \overline{c} & \overline{s} \\ -s & c \end{bmatrix} \bmatrix r_{(i-1)k} \\ r_{ik} \endbmatrix$
+                    \EndFor
+                    \For{$k = 1$ to $m$}
+                    \State $\bmatrix q_{k(i-1)} & q_{ki}\endbmatrix = \bmatrix q_{k(i-1)} & q_{ki} \endbmatrix \begin{bmatrix} \overline{c} & \overline{s} \\ -s & c \end{bmatrix}$
+                 \EndFor
+                \EndFor
+            \EndFor 
+        \end{algorithmic}
+    \end{tcolorbox}
+    \vspace{-0.3cm}
+\end{alg}
+
+\begin{alg}[QR-facrotisatie met Householder-rotaties]{alg:Householder}
+    \vspace{-0.3cm}
+    \begin{tcolorbox}[colback=white, colframe=gray, arc=0mm] 
+        \begin{algorithmic}[1]
+            \State $R = A$
+            \For{$j = 1$ to $n$}
+                \State $x= R(j:m,j)$
+                \State $v_j = x + \text{sign}(x_1)\|x\|_2 \boldsymbol{e}_1$
+                \State $v_j = v_j / \|v_j\|_2$
+                \State $R_{jj} = -\text{sign}(x_1)\|x\|_2$, \ $R(j+1:m,j) = 0$
+                \For{$k = j+1$ to $n$}
+                    \State $R(j:m,k) = R(j:m,k) - 2(v_j^*R(j:m,k))v_j$
+                \EndFor
+            \EndFor 
+            \For{$j = 1$ to $m$}
+                \State $w = \boldsymbol{e}_i$
+                \For{$k = n$ downto $1$}
+                    \State $w_{k:m} = w_{k:m} - 2(v_k^*w_{k:m})v_k$
+                \EndFor
+                \State $Q(:,i) = w$
+            \EndFor
+        \end{algorithmic}
+    \end{tcolorbox}
+    \vspace{-0.3cm}
+\end{alg}

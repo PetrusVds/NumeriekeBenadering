@@ -1,0 +1,30 @@
+%------------------------------------------------
+%               Algorithm Environment
+%------------------------------------------------
+
+\newcounter{alg}[subsection]
+\setcounter{alg}{0}
+
+\renewcommand{\thealg}{\arabic{subsection}.\arabic{alg}}
+
+\newenvironment{alg}[2][]{%
+    \refstepcounter{alg}%
+    \ifstrempty{#1}%
+    {\mdfsetup{%
+        frametitle={%
+        \tikz[baseline=(current bounding box.east),outer sep=0pt]
+        \node[anchor=east,rectangle,fill=violet!20]
+        {\strut Algoritme~\thealg};}}%
+    }%
+    {\mdfsetup{%
+        frametitle={%
+        \tikz[baseline=(current bounding box.east),outer sep=0pt]
+        \node[anchor=east,rectangle,fill=violet!20]
+        {\strut Algoritme~\thealg:~#1};}}%
+    }%
+    \mdfsetup{innertopmargin=10pt,linecolor=violet!20,%
+    linewidth=2pt,topline=true,%
+    frametitleaboveskip=\dimexpr-\ht\strutbox\relax
+    }%
+    \begin{mdframed}[]\relax%
+    \label{#2}}{\vspace{0.25cm}\end{mdframed}}
