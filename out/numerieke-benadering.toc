@@ -7,13 +7,14 @@
 \contentsline {subsection}{\numberline {2}Benadering van functies}{9}{subsection.0.2}%
 \contentsline {subsubsection}{\numberline {2.1}Metrische ruimte}{9}{subsubsection.0.2.1}%
 \contentsline {subsubsection}{\numberline {2.2}Vectorruimte}{10}{subsubsection.0.2.2}%
-\contentsline {subsection}{\numberline {3}Benadering door middel van veeltermen}{12}{subsection.0.3}%
-\contentsline {subsection}{\numberline {4}Discrete benadering op basis van meetdata}{12}{subsection.0.4}%
-\contentsline {subsection}{\numberline {5}Regularisatietechnieken}{12}{subsection.0.5}%
-\contentsline {section}{Data, Grafen en Eigenwaarden}{13}{section*.3}%
-\contentsline {subsection}{\numberline {6}Grafen en eigenwaarden in datawetenschappen}{14}{subsection.0.6}%
-\contentsline {subsection}{\numberline {7}Eigenwaardenalgoritmes}{14}{subsection.0.7}%
-\contentsline {section}{Niet-lineaire Benaderingsproblemen}{15}{section*.4}%
-\contentsline {subsection}{\numberline {8}Niet-lineaire benaderingsproblemen}{16}{subsection.0.8}%
-\contentsline {subsection}{\numberline {9}Optimalisatie-algoritmes}{16}{subsection.0.9}%
-\contentsline {subsection}{\numberline {10}Ijle representatie en benaderingen}{16}{subsection.0.10}%
+\contentsline {subsubsection}{\numberline {2.3}Unitaire ruimte en orthogonaliteit}{13}{subsubsection.0.2.3}%
+\contentsline {subsection}{\numberline {3}Benadering door middel van veeltermen}{15}{subsection.0.3}%
+\contentsline {subsection}{\numberline {4}Discrete benadering op basis van meetdata}{15}{subsection.0.4}%
+\contentsline {subsection}{\numberline {5}Regularisatietechnieken}{15}{subsection.0.5}%
+\contentsline {section}{Data, Grafen en Eigenwaarden}{16}{section*.3}%
+\contentsline {subsection}{\numberline {6}Grafen en eigenwaarden in datawetenschappen}{17}{subsection.0.6}%
+\contentsline {subsection}{\numberline {7}Eigenwaardenalgoritmes}{17}{subsection.0.7}%
+\contentsline {section}{Niet-lineaire Benaderingsproblemen}{18}{section*.4}%
+\contentsline {subsection}{\numberline {8}Niet-lineaire benaderingsproblemen}{19}{subsection.0.8}%
+\contentsline {subsection}{\numberline {9}Optimalisatie-algoritmes}{19}{subsection.0.9}%
+\contentsline {subsection}{\numberline {10}Ijle representatie en benaderingen}{19}{subsection.0.10}%

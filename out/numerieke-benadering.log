@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2023.8.30)  24 FEB 2025 16:05
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2023.8.30)  26 FEB 2025 16:01
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1022,7 +1022,85 @@ Package mdframed Info: mdframed detected package amsthm
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
 (mdframed)              on input line 105.
-) (./Chapters/LineaireBenaderingsproblemen/veeltermen.tex) (./Chapters/LineaireBenaderingsproblemen/meetdata.tex) (./Chapters/LineaireBenaderingsproblemen/regularisatie.tex) [11] [12] [13] (./Chapters/DataGrafenEigenwaarden/grafen.tex) (./Chapters/DataGrafenEigenwaarden/eigenwaardenalgoritmes.tex) [14] [15] (./Chapters/NietLineaireBenaderingsproblemen/NietLineaire.tex) (./Chapters/NietLineaireBenaderingsproblemen/Optimalisatie.tex) (./Chapters/NietLineaireBenaderingsproblemen/IjleRepresentatie.tex) [16]
+Package mdframed Info: mdframed detected package amsthm 
+ changed the theorem header of amsthm
+(mdframed)              on input line 107.
+
+Underfull \hbox (badness 10000) in paragraph at lines 112--114
+
+ []
+
+Package mdframed Info: mdframed detected package amsthm 
+ changed the theorem header of amsthm
+(mdframed)              on input line 116.
+Package mdframed Info: Not enough space on this page on input line 116.
+[11]
+Package mdframed Info: Not enough space on this page on input line 116.
+Package mdframed Info: mdframed detected package amsthm 
+ changed the theorem header of amsthm
+(mdframed)              on input line 118.
+Package mdframed Info: mdframed detected package amsthm 
+ changed the theorem header of amsthm
+(mdframed)              on input line 120.
+Package mdframed Info: mdframed detected package amsthm 
+ changed the theorem header of amsthm
+(mdframed)              on input line 122.
+Package mdframed Info: mdframed detected package amsthm 
+ changed the theorem header of amsthm
+(mdframed)              on input line 155.
+ [12]
+Package mdframed Info: mdframed detected package amsthm 
+ changed the theorem header of amsthm
+(mdframed)              on input line 162.
+
+Underfull \hbox (badness 10000) in paragraph at lines 169--170
+
+ []
+
+Package mdframed Info: mdframed detected package amsthm 
+ changed the theorem header of amsthm
+(mdframed)              on input line 172.
+Package mdframed Info: mdframed detected package amsthm 
+ changed the theorem header of amsthm
+(mdframed)              on input line 174.
+Package mdframed Info: mdframed detected package amsthm 
+ changed the theorem header of amsthm
+(mdframed)              on input line 180.
+[13]
+Package mdframed Info: mdframed detected package amsthm 
+ changed the theorem header of amsthm
+(mdframed)              on input line 184.
+Package mdframed Info: mdframed detected package amsthm 
+ changed the theorem header of amsthm
+(mdframed)              on input line 196.
+Package mdframed Info: Not enough space on this page on input line 196.
+Package mdframed Info: mdframed detected package amsthm 
+ changed the theorem header of amsthm
+(mdframed)              on input line 198.
+Package mdframed Info: mdframed detected package amsthm 
+ changed the theorem header of amsthm
+(mdframed)              on input line 204.
+Package mdframed Info: mdframed detected package amsthm 
+ changed the theorem header of amsthm
+(mdframed)              on input line 206.
+Package mdframed Info: mdframed detected package amsthm 
+ changed the theorem header of amsthm
+(mdframed)              on input line 220.
+Package mdframed Info: mdframed detected package amsthm 
+ changed the theorem header of amsthm
+(mdframed)              on input line 222.
+Package mdframed Info: mdframed detected package amsthm 
+ changed the theorem header of amsthm
+(mdframed)              on input line 224.
+ [14]
+Package mdframed Info: mdframed detected package amsthm 
+ changed the theorem header of amsthm
+(mdframed)              on input line 228.
+Package mdframed Info: mdframed detected package amsthm 
+ changed the theorem header of amsthm
+(mdframed)              on input line 234.
+Package mdframed Info: Not enough space on this page on input line 234.
+) (./Chapters/LineaireBenaderingsproblemen/veeltermen.tex) (./Chapters/LineaireBenaderingsproblemen/meetdata.tex) (./Chapters/LineaireBenaderingsproblemen/regularisatie.tex) [15] [16] (./Chapters/DataGrafenEigenwaarden/grafen.tex) (./Chapters/DataGrafenEigenwaarden/eigenwaardenalgoritmes.tex) [17] [18] (./Chapters/NietLineaireBenaderingsproblemen/NietLineaire.tex) (./Chapters/NietLineaireBenaderingsproblemen/Optimalisatie.tex) (./Chapters/NietLineaireBenaderingsproblemen/IjleRepresentatie.tex) [19]
 This exam contains 0 questions with 0 parts, 0 subparts, and 0 subsubparts.
 (out/numerieke-benadering.aux)
  ***********
@@ -1030,21 +1108,21 @@ LaTeX2e <2023-06-01> patch level 1
 L3 programming layer <2023-08-11>
  ***********
 Package rerunfilecheck Info: File `numerieke-benadering.out' has not changed.
-(rerunfilecheck)             Checksum: 48FC7BE73B31D349D1EB290C5D73A048;3654.
+(rerunfilecheck)             Checksum: A18AB18E45EF336B8A3E292F81415896;3901.
  ) 
 Here is how much of TeX's memory you used:
- 27408 strings out of 475189
- 526023 string characters out of 5763832
- 1947254 words of memory out of 5000000
- 48126 multiletter control sequences out of 15000+600000
+ 27476 strings out of 475189
+ 527408 string characters out of 5763832
+ 1948254 words of memory out of 5000000
+ 48175 multiletter control sequences out of 15000+600000
  568716 words of font info for 76 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 89i,24n,96p,835b,1013s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 89i,24n,96p,835b,1015s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmex7.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmmib10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmmib7.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy5.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm7.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/cm-super/sfrm1000.pfb>
-Output written on out/numerieke-benadering.pdf (17 pages, 259471 bytes).
+Output written on out/numerieke-benadering.pdf (20 pages, 275880 bytes).
 PDF statistics:
- 350 PDF objects out of 1000 (max. 8388607)
- 286 compressed objects within 3 object streams
- 83 named destinations out of 1000 (max. 500000)
- 157 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 390 PDF objects out of 1000 (max. 8388607)
+ 322 compressed objects within 4 object streams
+ 102 named destinations out of 1000 (max. 500000)
+ 165 words of extra memory for PDF output out of 10000 (max. 10000000)
 

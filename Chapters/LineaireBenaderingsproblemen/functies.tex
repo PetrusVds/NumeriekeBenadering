@@ -73,11 +73,11 @@
     \begin{equation*}
         \|\vec{\alpha} + \vec{\beta}\| \leq \|\vec{\alpha}\| + \|\vec{\beta}\|;
     \end{equation*}
-    stel hierin $\vec{\alpha} = \vec{x} - \vec{z}$ en $\vec{\beta} = \vec{z} - \vec{y}$, dan volgt:
+    stel hierin $\vec{\alpha} = \vec{x} - \vec{z}$ en $\vec{\beta} = \vec{z} - \vec{y}$, dan volgt het gestelde, namelijk:
     \begin{equation*}
-        \|\vec{x} - \vec{y}\| = \|\vec{x} - \vec{z} + \vec{z} - \vec{y}\| \leq \|\vec{x} - \vec{z}\| + \|\vec{z} - \vec{y}\|,
+        \|\vec{x} - \vec{y}\| = \|\vec{x} - \vec{z} + \vec{z} - \vec{y}\| \leq \|\vec{x} - \vec{z}\| + \|\vec{z} - \vec{y}\|.
     \end{equation*}
-    waaruit de driehoeksongelijkheid volgt.
+    \vspace{-0.5cm}
 \end{prf}
 
 \begin{lem}[Translatie-invariantie en homogeniteit]{lem:Translatie-invariantie en homogeniteit}
@@ -89,7 +89,7 @@
 \end{lem}
 
 \begin{theo}[Convexe en strikte convexe deelverzameling van een vectorruimte]{theo:convex_vectorruimte}
-    Een deelverzameling $C$ van een vectorruimte $V$ is convex wanneer voor alle $\lambda > 0$ en $\mu >0$ met $\lambda + \mu = 1$ en voor alle $\vec{x},\vec{y} \in C$ geldt dat $\lambda \vec{x} + \mu \vec{y} \in C$. Wanneer al deze punten tit het inwendige van $C$ behoren, dan noemt men $C$ stikt convex.
+    Een deelverzameling $C$ van een vectorruimte $V$ is convex wanneer voor alle $\lambda > 0$ en $\mu >0$ met $\lambda + \mu = 1$ en voor alle $\vec{x},\vec{y} \in C$ geldt dat $\lambda \vec{x} + \mu \vec{y} \in C$. Wanneer al deze punten tot het inwendige van $C$ behoren, dan noemt men $C$ stikt convex. Meetkundig betekent dit dat elk open lijnstuk $L(x,y)$ dat twee punten $x$ en $y$ van $C$ verbindt, volledig in $C$ ligt.
 \end{theo}
 
 \begin{pro}[Convexiteit en genormeerde ruimte]{pro:convexiteit_genormeerde_ruimte}
@@ -102,4 +102,133 @@
         \|\lambda\vec{x}_1 + (1-\lambda)\vec{x}_2 -\vec{a}\| \leq \lambda \|\vec{x}_1 - \vec{a}\| + (1 - \lambda)\|\vec{x}_2 - \vec{a}\| \leq \lambda r + (1-\lambda)r = r.
     \end{equation*}
     \vspace{-0.5cm}
+\end{prf}
+
+\begin{theo}[Strikt genormeerde ruimte en strike norm]{theo:strikte_norm_ruimte}
+    Een genormeerde ruimte is strikt genormeerd als de eenheidsbol $B(\vec{0},1)$ strikt convex is. De eenheidsbol is strikt convex als er geen `rechte' lijnstukken in voorkomen, of wiskundig:
+    \begin{equation*}
+        \left( \vec{x} \neq \vec{y} \ \land \ \|\vec{x}\| = \| \vec{y} \| = 1 \right)
+        \ \Rightarrow \ \|\vec{x} + \vec{y}\| < 2.
+    \end{equation*}
+    Men spreekt dan van een strikte norm. \\
+
+    \textbf{Opmerking:} De 1-norm en de $\infty$-norm in $\mathbb{R}^n$ zijn \textbf{geen} strikte normen, omdat de eenheidsbol in deze normen niet strikt convex is.
+\end{theo}
+
+\begin{lem}[Beste benadering in een deelruimte]{lem:beste_benadering_deelruimte}
+    Zij $\mathcal{D}$ een eindigdimensionale deelruimte van een strikt genormeerde ruimte $V$ en zij $\vec{v} \in V$. Dan bestaat de beste benadering van $\vec{v} \in \mathcal{D}$ en is deze uniek.  
+\end{lem}
+
+\begin{prf}[Beste benadering in een deelruimte]{prf:beste_benadering_deelruimte}
+    \begin{itemize}
+        \item 
+            \textbf{Existentie}: Noem $d = \inf\{\|\vec{v}-\vec{w}\| | \vec{w} \in \mathcal{D}\}$. We tonen aan dat dit infimum in feite een minimum is. Volgens de definitie van een infimum bestaat er een rij van vectoren $\{\vec{w}_k\}_{k>1}$ in $\mathcal{D}$ zodat $\{\|\vec{v}-\vec{w}\|\}_{k>1}$ een dalende rij is die convergeert naar $d$. De rij $\{\vec{w}_k\}_{k>1}$ is bovendien uniform begrensd omdat 
+            \begin{equation}
+                \forall k > 1: \ \|\vec{w}_k\| = \|(\vec{w}_k - \vec{v}) + \vec{v}\| \leq \|\vec{w}_k - \vec{v}\| + \|\vec{v}\| \leq \|\vec{w}_1 - \vec{v}\| + \|\vec{v}\|
+                \label{eq:uniform_begrensd}
+            \end{equation}
+            Stel $n$ gelijk aan de dimensie van $\mathcal{D}$ en beschouw $\{\vec{a}_1,\ldots,\vec{a}_n\}$ van $\mathcal{D}$. Dan kunnen we $\vec{w}_k$ met $k > 1$ ontbinden als:
+            \begin{equation*}
+                \vec{w}_k = \sum_{i=1}^n \alpha_{ki}\vec{a}_i 
+            \end{equation*}
+            Uit (\ref{eq:uniform_begrensd}) volgt dat de rij $\{\alpha_{k1},\ldots,\alpha_{kn}\}_{k>1}$ uniform begrensd is. Deze rij heeft bijgevolg steeds een convergente deelrij (\textbf{stelling van Weierstrass-Bolzano}) waarvan we de limiet $(\hat{\alpha}_1,\ldots,\hat{\alpha}_n)$ noemen. Daarom kunnen we, zonder algemeenheid in te boeten, in wat volgt veronderstellen dat de rij $\{\alpha_{k1},\ldots,\alpha_{kn}\}_{k>1}$ convergeert naar $(\hat{\alpha}_1,\ldots,\hat{\alpha}_n)$. Stel nu dat
+            \begin{equation*}
+                \vec{\zeta} = \sum_{i=1}^{n} \hat{\alpha}_i \vec{a}_i
+            \end{equation*} 
+            dan geldt er voor alle $k\geq1$ dat 
+            \begin{equation*}
+                \|\vec{v} - \vec{\zeta}\| \leq \underbrace{\|\vec{v} - \vec{w}_k\|}_{\rightarrow d} + \underbrace{\|\vec{w}_k - \vec{\zeta}\|}_{\rightarrow 0},
+            \end{equation*}
+            wat $\|\vec{v} - \vec{\zeta}\| = d$ impliceert. De vector $\vec{\zeta}$ is bijgevolg de beste benadering van $\vec{v}$ in $\mathcal{D}$.
+\newpage
+        \item 
+            \textbf{Uniciteit}: Het bewijs is uit het ongeruijmde. Veronderstel dat er twee verschillende beste benaderingen zijn, $\vec{\zeta}_1$ en $\vec{\zeta}_2$, zodat 
+            \begin{equation*}
+                \|\vec{v} - \vec{\zeta}_1\| = \|\vec{v} - \vec{\zeta}_2\| = d.
+            \end{equation*}
+            Merk dat $\vec{e}_i = \frac{1}{d}(\vec{v} - \vec{\zeta}_i)$ op de eenheidsbol in $V$ ligt voor $i = 1,2$. Omdat de eenheidsbol strikt convex is geldt
+            \begin{equation*}
+                \left\| \vec{v} - \frac{\vec{\zeta}_1 + \vec{\zeta}_2}{2} \right\| = d \left\| \underbrace{\frac{1}{2}}_\lambda\vec{e}_1 + \underbrace{\frac{1}{2}}_\mu\vec{e}_2 \right\| < d,
+            \end{equation*}
+            Dus $\frac{1}{2}(\vec{\zeta}_1 + \vec{\zeta}_2) \in \mathcal{D}$ is een betere benadering van $\vec{v}$ dan $\vec{\zeta}_1$ en $\vec{\zeta}_2$, wat in tegenspraak is met de veronderstelling.
+    \end{itemize}
+\end{prf}
+
+\subsubsection{Unitaire ruimte en orthogonaliteit}
+
+\vspace{0.5cm}
+
+\begin{theo}[Unitaire ruimte]
+    Men noemt een vectorruimte $V$ over de complexe getallen unitair als er met elk paar elementen $\vec{x}, \vec{y} \in V$ een complex getal $(\vec{x},\vec{y})$ overeenstemt dat voldoet aan de volgende eigenschappen:
+    \begin{enumerate}
+        \item $\forall a \in \mathbb{C}: \ (\vec{x},a\vec{y}) = a(\vec{x},\vec{y})$
+        \item $(\vec{x} + \vec{y},\vec{z}) = (\vec{x},\vec{z}) + (\vec{y},\vec{z})$
+        \item $(\vec{x},\vec{y}) = \overline{(\vec{y},\vec{x})}$
+        \item $(\vec{x},\vec{x}) > 0$ als $\vec{x} \neq \vec{0}$
+    \end{enumerate}
+    Men noemt $(\vec{x},\vec{y})$ het scalair product van $\vec{x}$ en $\vec{y}$. \\
+
+    \textbf{Opmerking:} Uit de derde eigenschap volgt dat $(\vec{x},\vec{x})$ reëel is. Hierdoor is het scalair product over het veld $\mathbb{R}$ symmetrisch.
+\end{theo}
+
+\begin{lem}[Unitair impliceert genormeerd]{lem:unitair_impliceert_genormeerd}
+    Als een vectorruimte unitair is, dan is ze ook genormeerd. De functie
+    \begin{equation*}
+        \| \vec{x} \| = \sqrt{(\vec{x},\vec{x})}
+    \end{equation*}
+    voldoet aan de definitie van een norm.
+\end{lem}
+
+\newpage
+
+\begin{prf}[Unitair impliceert genormeerd]{prf:unitair_impliceert_genormeerd}
+    De eerste `drie' normeigenschappen (positief definitief, homogeniteit) zijn gemakkelijk te bewijzen. De driehoeksongelijkheid volgt (voor $\vec{x} + \vec{y} \neq \vec{0}$) uit de Cauchy-Schwarz ongelijkheid:
+    \begin{align*}
+        (\vec{x} + \vec{y},\vec{x} + \vec{y}) 
+            &= (\vec{x}, \vec{x} + \vec{y}) + (\vec{y}, \vec{x} + \vec{y}) \\
+            &\leq \sqrt{(\vec{x},\vec{x})} \sqrt{(\vec{x} + \vec{y},\vec{x} + \vec{y})} + \sqrt{(\vec{y},\vec{y})} \sqrt{(\vec{x} + \vec{y},\vec{x} + \vec{y})} 
+    \end{align*}
+    en dus
+    \begin{equation*}
+        \sqrt{(\vec{x} + \vec{y},\vec{x} + \vec{y})} \leq \sqrt{(\vec{x},\vec{x})} + \sqrt{(\vec{y},\vec{y})}.
+    \end{equation*}
+    Voor het geval $\vec{x} + \vec{y} = \vec{0}$ is de driehoeksongelijkheid triviaal.
+\end{prf}
+
+\begin{lem}[Genormeerd naar unitair]{lem:genormeerd_naar_unitair}
+    Een genormeerde vectorruimte is een unitaire ruimte met een scalair product dat voldoet aan Stelling~\ref{lem:unitair_impliceert_genormeerd}, als en slechts als de norm voldoet aan de parallellogramongelijkheid:
+    \begin{equation*}
+        \| \vec{x} + \vec{y} \|^2 + \| \vec{x} - \vec{y} \|^2 = 2 \left(\| \vec{x} \|^2 + \| \vec{y} \|^2\right).
+    \end{equation*}
+    \vspace{-0.5cm}
+\end{lem}
+
+\begin{prf}[Genormeerd naar unitair]{prf:genormeerd_naar_unitair}
+    Het nodig zijn wordt als volgt aangetoond:
+    \begin{align*}
+        \|\vec{x} + \vec{y}\|^2 + \|\vec{x} - \vec{y}\|^2 
+            &= (\vec{x} + \vec{y},\vec{x} + \vec{y}) + (\vec{x} - \vec{y},\vec{x} - \vec{y}) \\
+            &= 2(\vec{x},\vec{x}) + 2(\vec{y},\vec{y}).
+    \end{align*}
+    Voor een reële vecorruimte wordt het voldoende zijn bewezen door aan te tonen dat
+    \begin{equation*}
+        (\vec{x},\vec{y}) = \frac{1}{4}\left\{
+            \| \vec{x} + \vec{y} \|^2 - \| \vec{x} \|^2 - \| \vec{y} \|^2
+        \right\}
+    \end{equation*}
+    een scalair product is, en dat de natuurlijke norm van dit scalair product de oorspronkelijke norm is. Het bewijs is nogal technisch en laten we achterwege.
+\end{prf}
+
+\begin{lem}[Eenheidsbol in unitaire ruimte]{lem:eenheidsbol_unitaire_ruimte}
+    De eenheidsbol in een unitaire ruimte is strikt convex.
+\end{lem}
+
+\newpage
+
+\begin{prf}[Eenheidsbol in unitaire ruimte]{prf:eenheidsbol_unitaire_ruimte}
+    Het volstaat aan te tonen dat de geziene formule in Definitie~\ref{theo:strikte_norm_ruimte} geldt. Welnu, neem $\vec{x} \neq \vec{y}$ met $\|\vec{x}\| = \|\vec{y}\| = 1$. Dan volgt uit de parallellogramongelijkheid
+    \begin{equation*}
+        \| \vec{x} + \vec{y} \|^2 = - \| \vec{x} - \vec{y} \|^2 + 2(\| \vec{x} \|^2 + \| \vec{y}\|^2)= - \| \vec{x} - \vec{y} \|^2 + 4 < 4.
+    \end{equation*}
+    En dus is $\| \vec{x} + \vec{y} \| < 2$.
 \end{prf}
