@@ -14,6 +14,10 @@
 \usepackage{algpseudocode}
 \usepackage{tcolorbox} 
 \usepackage[dutch]{babel}
+\usepackage{tikz}
+\usepackage{rotating} 
+\usetikzlibrary{shapes, arrows}
+\usetikzlibrary{positioning}
 
 \counterwithin*{equation}{section}% Reset equation at \section
 \counterwithin*{equation}{subsection}% Reset equation at \subsection
@@ -117,6 +121,12 @@
 
 \input{Chapters/LineaireBenaderingsproblemen/veeltermen.tex}
 
+\subsection{Benadering door middel van splinefuncties}
+
+\vspace{0.5cm}
+
+\input{Chapters/LineaireBenaderingsproblemen/splines.tex}
+
 % \newpage
 
 \subsection{Discrete benadering op basis van meetdata}
@@ -189,6 +199,70 @@
 
 \input{Chapters/NietLineaireBenaderingsproblemen/IjleRepresentatie.tex}
 
-% \newpage
+\newpage
+
+
+%------------------------------------------------
+%	               APPENDIX
+%------------------------------------------------
+
+\introPage{Appendix}
+
+\newpage
+
+\begin{sidewaysfigure} % Rotates the figure
+    \centering
+    \begin{tikzpicture}[
+        node distance=1cm and 1cm,
+        every node/.style={font=\sffamily},
+        box/.style={draw, rounded corners, minimum width=2cm, minimum height=1cm, align=center},
+        bluebox/.style={box, fill=blue!20},
+        redbox/.style={box, fill=red!20},
+        arrow/.style={->, thick}
+    ]
+    
+    % Nodes
+    \node[redbox] (veralgemening) {Veralgemening};
+    \node[bluebox, right=of veralgemening] (h12) {H12: Ijle benadering};
+    \node[bluebox, below=of veralgemening] (h2) {H2: Benaderen van vectoren};
+    \node[redbox, right=of h2] (dimtrans) {Eindige dimensie \\ $\rightarrow$ \\ oneindige dimensie};
+    \node[bluebox, right=of dimtrans] (h3) {H3: Benaderen van functies};
+    \node[redbox, below=of h2] (specifiek1) {Specifieker};
+    \node[bluebox, below=of specifiek1] (h8) {H8: Grafen};
+    \node[redbox, below=of h8] (alg1) {Algoritmes};
+    \node[bluebox, below=of alg1] (h9) {H9: Eigenwaarden};
+    \node[redbox, below=of h3] (specifiek2) {Specifieker};
+    \node[bluebox, left=of specifiek2] (h4) {H4: veeltermen};
+    \node[bluebox, right=of h4] (h5) {H5: splines};
+    \node[bluebox, right=of h5] (h10) {H10: Niet-lineaire \\ benadering};
+    \node[redbox, below=of h10] (alg2) {Algoritmes};
+    \node[bluebox, below=of alg2] (h11) {H11: Optimalisatie};
+    \node[redbox, right=of h3] (parallel) {Parallel};
+    \node[bluebox, right=of parallel] (h6) {H6: Benaderen van data};
+    \node[redbox, below=of h6] (extra) {Extra overweging};
+    \node[bluebox, below=of extra] (h7) {H7: Regularisatie};
+    
+    % Arrows
+    \draw[arrow] (veralgemening) -- (h12);
+    \draw[arrow] (h2) -- (veralgemening);
+    \draw[arrow] (h2) -- (dimtrans);
+    \draw[arrow] (dimtrans) -- (h3);
+    \draw[arrow] (h3) -- (parallel);
+    \draw[arrow] (parallel) -- (h6);
+    \draw[arrow] (h6) -- (extra);
+    \draw[arrow] (extra) -- (h7);
+    \draw[arrow] (h2) -- (specifiek1);
+    \draw[arrow] (specifiek1) -- (h8);
+    \draw[arrow] (h8) -- (alg1);
+    \draw[arrow] (alg1) -- (h9);
+    \draw[arrow] (h3) -- (specifiek2);
+    \draw[arrow] (specifiek2) -- (h4);
+    \draw[arrow] (specifiek2) -- (h5);
+    \draw[arrow] (h5) -- (h10);
+    \draw[arrow] (h10) -- (alg2);
+    \draw[arrow] (alg2) -- (h11);
+    
+    \end{tikzpicture}
+\end{sidewaysfigure}
 
 \end{document}

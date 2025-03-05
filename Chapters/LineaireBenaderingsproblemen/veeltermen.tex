@@ -1,0 +1,294 @@
+\subsubsection{Orthogonale veeltermen}
+
+\vspace{0.5cm}
+
+\begin{pro}[Orthogonale veeltermen]{pro:orthogonale_veeltermen}
+    Het stel orthogonale veeltermen $\phi_0(x), \phi_1(x), \ldots, \phi_n(x)$ vormt een basis van de ruimte $P_n[a,b]$.
+\end{pro}
+
+\begin{prf}[Orthogonale veeltermen]{prf:orthogonale_veeltermen}
+    Het stel van $n+1$ veeltermen is lineair onafhankelijk in een ruimte met dimensie $n+1$, dit volgt uit de inverteerbaarheid van de grammatrix. Het stel is dus een basis van $P_n[a,b]$.
+\end{prf}
+
+\begin{lem}[Lageregraadstermen en orthogonaliteit]{lem:lageregraadstermen_en_orthogonaliteit}   
+    Een veelterm die behoort tot een rij orthogonale veeltermen is ook orthogonaal tot alle veeltermen van een lagere graad.
+\end{lem}
+
+\newpage
+
+\begin{lem}[Orthogonale veeltermen over de reële getallen]{lem:Orthogonale_veeltermen_reeel}   
+    De orthogonale veeltermen $\phi_0(x), \phi_1(x), \ldots, \phi_n(x)$ voldoen aan een drietermrecursiebetrekking:
+    \begin{align*}
+        \phi_0(x) &= \lambda_0, \\
+        \phi_1(x) &= \lambda_1\left(x - \frac{(x,1)}{(1,1)}\right)\phi_0(x), \\
+        \phi_k(x) &= \lambda_k\left(x - \alpha_k\right)\phi_{k-1}(x) - \beta_k\phi_{k-2}(x).
+    \end{align*}
+    waarbij
+    \begin{equation*}
+        \alpha_k = \frac{(x\phi_{k-1},\phi_{k-1})}{(\phi_{k-1},\phi_{k-1})}, \quad
+        \beta_k = \frac{(x\phi_{k-1},\phi_{k-2})}{(\phi_{k-2},\phi_{k-2})},
+    \end{equation*}
+    en $\lambda_k$ een normalisatieconstante is. \\
+
+    \textbf{Opmerking:} De formules werden afgeleid voor een algemeen scalair product gedefinieerd op een vectorruimte over de reële getallen.
+\end{lem}
+
+\begin{prf}[Orthogonale veeltermen over de reële getallen]{prf:Orthogonale_veelterme_reeel} 
+    Veeltermen $\phi_0(x)$ en $\phi_1(x)$ verkrijgt men door orthogonalisatie van $1$ en $x$ met de Gram-Schmidtprocedure. De waarden van $\lambda_0$ en $\lambda_1$ volgen uit de normalisatievoorwaarde. \\
+
+    Vermits de veelterm $x\phi_{k-1}(x)$ een veelterm van graad $k$ is, kan ze ontbonden worden als een lineaire combinatie van de orthogonale veeltermen $\phi_0(x), \phi_1(x), \ldots, \phi_{k}(x)$. Herneem formule
+    \begin{equation*}
+        y_n(x) = \sum_{i=0}^{n} \alpha_k\phi_k(x), \quad \alpha_k = \frac{(\phi_k, f)}{\phi_k, \phi_k}.
+    \end{equation*}
+    Nu krijgen we:
+    \begin{equation*}
+        x\phi_{k-1}(x) = \sum_{i=0}^{k-1} b_i\phi_i(x), \quad \forall \ell \leq k: \ b_\ell = \frac{(x\phi_{k-1},\phi_\ell)}{(\phi_\ell,\phi_\ell)} = \frac{(\phi_{k-1},\phi_\ell)}{(\phi_\ell,\phi_\ell)}.
+    \end{equation*}
+    De veelterm $x\phi_{\ell}(x)$ is van graad $\ell+1$. Uit Stelling~\ref{lem:lageregraadstermen_en_orthogonaliteit} volgt dan dat $b_\ell$ gelijk is aan nul wanneer $k - 1 > \ell + 1$, of nog, wanneer $\ell < k - 2$. In het rechterlid van de bovenstaande vergelijking blijven enkel de termen over met $k - 2 \leq \ell \leq k$. We vinden dus: 
+    \begin{equation*}
+        x\phi_{k-1}(x) = b_{k-2}\phi_{k-2}(x) + b_{k-1}\phi_{k-1}(x) + b_k\phi_k(x).
+    \end{equation*}
+    Dit herschrijven we als:
+    \begin{equation*}
+        \phi_k(x) = \frac{1}{b_k}\left((x-b_{k-1})\phi_{k-1}(x) - b_{k-2}\phi_{k-2}(x)\right).
+    \end{equation*}
+    Dit geeft ons de drietermrecursiebetrekking. 
+\end{prf}
+
+\begin{app}[Orthogonale veeltermen]{prf:Orthogonale_veelterme_reeel} 
+    Met een gebruik van het continue scalair product voor een gewichtsfunctie $w(x)$ over een interval $[a,b]$ kunnen de coëfficiënten van de recursiebetrekking voluit geschreven worden als:
+    \begin{equation*}
+        \alpha_k = \frac{\int_{a}^{b}w(x)x\phi^2_{k-1}(x)dx}{\int_{a}^{b}w(x)\phi^2_{k-1}(x)dx}, \quad \beta_k = \frac{\int_{a}^{b}w(x)x\phi_{k-1}(x)\phi_{k-2}(x)dx}{\int_{a}^{b}w(x)\phi^2_{k-2}(x)dx}.
+    \end{equation*}
+\end{app}
+
+\begin{lem}[Nulpunten van orthogonale veeltermen]{lem:Nulpunten_orthogonale_veeltermen}   
+    De veelterm $\phi_k(x)$ die behoort tot een stel veeltermen dat orthogonaal is over een interval $[a,b]$ heeft $k$ enkelvoudige reële nulpunten in het open interval $(a,b)$.
+\end{lem}
+
+\begin{prf}[Nulpunten van orthogonale veeltermen]{prf:Nulpunten_orthogonale_veeltermen}   
+    Voor $k=0$ is de stelling triviaal; het bewijs dat hier volgt, geldt voor $k>0$. \\
+
+    Daar $\phi_k(x)$ een veelterm is van de $k$-de graad, heeft hij hoogstens $k$ reële nulpunten. Hij kan dus hoogstens $k$ maal van teken veranderen in $(a,b)$, en dit enkel als alle nulpunten reëel en enkelvoudig zijn. Als we dus kunnen bewijzen dat deze veeltermen $k$ maal van teken verandert in $(a,b)$, dan is de stelling bewezen.
+
+    Veronderstel dat $\phi_k(x)$ slechts $m$ keer van teken verandert met $m < k$. Noem de punten waar dit gebeurt $x_1,\dots,x_m$. Beschouw dan de veelterm:
+    \begin{equation*}
+        \psi(x) = \phi_k(x)\prod_{i=1}^{m}(x-x_i).
+    \end{equation*}
+    Telens als $\phi_k(x)$ van teken wisselt, bijvoorbeeld in $x_i$, wordt dit opgeheven door de aanwezigheid van een factor $(x-x_i)$ die er ook van teken wisselt. De functie $\psi(x)$ verandert dus nergens van teken in $(a,b)$. Vanwege de continuïteit is $\psi(x)$ dus overal positief of overal negatief. De integraal
+    \begin{equation*}
+        \int_{a}^{b}w(x)\psi(x)dx =  \int_{a}^{b}w(x)\phi_k(x)\prod_{i=1}^{m}(x-x_i)dx
+    \end{equation*}
+    is bijgevolg verschillend van nul. \\
+
+    Welnu, $\prod_{i=1}^{m}(x-x_i)$ is een veelterm van graad $m<k$, en dus orthogonaal tot $\phi_k(x)$; dus moet de integraal wel nul zijn. De aanname $m < k$ is bijgevolg onjuist.
+\end{prf}
+
+\newpage
+
+\begin{lem}[Eigenwaarden en tridiagonale matrix]{lem:Eigenwaarden_tridiagonale_matrix}   
+    De nulpunten van de veelterm $\phi_n(x)$ zijn de eigenwaarden van $\textbf{tridiag}(v_{k-1};\alpha_k;\mu_k)$, de $n \times n$ tridiagonale matrix, met $v_k = \beta_{k+1}$ en $\mu_k = \frac{1}{\lambda_k}$, waarbij $\alpha_k, \beta_k$ en $\lambda_k$ gegeven worden door Stelling~\ref{lem:Orthogonale_veeltermen_reeel}.
+    \vspace{-0.2cm}
+\end{lem}
+
+
+\begin{prf}[Eigenwaarden en tridiagonale matrix]{prf:Eigenwaarden_tridiagonale_matrix}  
+    Definieer de $n \times n$ tridiagonale matrix $A$ en de $n$-vector $\Phi(x)$ als:
+    \begin{equation*}
+        A = \begin{bmatrix}
+            \alpha_1 & \mu_1 & 0 & \cdots & 0 \\
+            v_1 & \alpha_2 & \mu_2 & \ddots & \vdots \\
+            0 & v_2 & \alpha_3 & \ddots & 0 \\
+            \vdots & \ddots & \ddots & \ddots & \mu_{n-1} \\
+            0 & \cdots & 0 & v_{n-1} & \alpha_n
+        \end{bmatrix}
+        \quad \text{en} \quad
+        \Phi(x) = \begin{bmatrix}
+            \phi_0(x) \\
+            \phi_1(x) \\
+            \vdots \\
+            \phi_{n-1}(x) \\
+            \phi_{n-1}(x)
+        \end{bmatrix}.
+    \end{equation*}
+    De fundamentele recursiebetrekking kan herschreven worden als:
+    \begin{equation*}
+        \beta_k\phi_{k-2}(x) + \alpha_k\phi_{k-1}(x) + \frac{1}{\lambda_k}\phi_k(x) = x\phi_{k-1}(x).
+    \end{equation*}
+    Stel nu $v_k = \beta_{k+1}$ en $\mu_k = \frac{1}{\lambda_k}$, dan wordt dit:
+    \begin{equation*}
+        v_{k-1}\phi_{k-2}(x) + \alpha_k\phi_{k-1}(x) + \mu_k\phi_k(x) = x\phi_{k-1}(x).
+    \end{equation*}
+    Gebruik makend van bovenstaande betrekking, kan men het matrix-vectorproduct $A\Phi(x)$ vereenvoudigen tot:
+    \begin{equation*}
+        A\Phi(x) = x\begin{bmatrix}
+            \phi_1(x) \\
+            \phi_2(x) \\
+            \vdots \\
+            \phi_{n-2}(x) \\
+            \phi_{n-1}(x) 
+        \end{bmatrix}
+        - \mu_n\begin{bmatrix}
+            0 \\
+            0 \\
+            \vdots \\
+            0 \\
+            \phi_{n}(x)
+        \end{bmatrix}
+        = x\Phi(x) - \mu_n\Psi(x).
+    \end{equation*}
+    Evalueren we deze betrekking in een nulpunt $x_k$ van de veelterm $\phi_n(x)$, dan vinden we:
+    \begin{equation*}
+        A\Phi(x_k) = x_k\Phi(x_k).
+    \end{equation*}
+    Dit wil zeggen dat $x_k$ een eigenwaarde is van $A$, met $\Phi(x_k)$ als corresponderende eigenvector. Dit geldt voor alle nulpunten $x_k$ van $\phi_n(x)$. Vermits een $n \times n $ matrix hoogstens $n$ verschillende eigenwaarden heeft, moeten alle eigenwaarden nulpunten zijn (en omgekeerd).
+\end{prf}
+
+\newpage
+
+\begin{lem}[Kleinste-kwadratenbenadering]{lem:kleinste_kwadratenbenadering}
+    Zij een orthogonaal stel veeltermen $\phi_0(x), \phi_1(x), \ldots, \phi_n(x)$ en een continue te benaderen functie $f(x)$. De kleinste-kwadratenbenadering van de $n$-de graad is dan gelijk aan:
+    \begin{equation*}
+        y_n(x) = \sum_{k=0}^n \alpha_k\phi_k(x) \quad \text{met} \quad \alpha_k = \frac{\int_a^b w(x)f(x)\phi_k(x)dx}{\int_a^b w(x) \phi_k^2(x)dx}.
+    \end{equation*}
+    De fout of het residu van de kleinste-kwadratenbenadering t\@.o\@.v\@. de $n$-de graad is dan gelijk aan:
+    \begin{equation*}
+        r_n(x) = f(x) - y_n(x) \simeq -\alpha_{n+1}\phi_{n+1}(x).
+    \end{equation*}
+\end{lem}
+
+\begin{lem}[Interpolerende eigenschap van de kleinste-kwadratenbenadering]{lem:interpolerende_eigenschap_kleinste_kwadratenbenadering}
+    Zij $f$ een continue functie op het interval $[a,b]$. Dan geldt dat de fout van de $n$-de graadsbenadering nul wordt in minstens $n+1$ punten van het open interval $(a,b)$.
+\end{lem}
+
+\begin{prf}[Interpolerende eigenschap van de kleinste-kwadratenbenadering]{prf:interpolerende_eigenschap_kleinste_kwadratenbenadering}
+    We tonen aan dat het residu minstens $n+1$ tekenwisselingen ondergaat in het open interval $(a,b)$. Uit de continuïteit van $f(x)$ volgt dan dat het residu minstens $n+1$ nulpunten heeft. \\
+
+    Veronderstel dat $r_n(x)$ slechts $m$ tekenwisselingen zou ondergaan, met $m\leq n$, namelijk in de punten $x_1 < x_2 < \ldots < x_m$, gelegen in het open interval $(a,b)$. Dan heeft de functie:
+    \begin{equation*}
+        r_n(x)\prod_{i=1}^{m}(x-x_i)
+    \end{equation*}
+    geen enkele tekenverandering in $[a,b]$ en is dus:
+    \begin{equation*}
+        \int_{a}^{b}w(x)r_n(x)\prod_{i=1}^{m}(x-x_i)dx \neq 0.
+    \end{equation*}
+    Wegens Stelling~\ref{lem:beste_benadering} staat de functie $r_n(x)$ dus ook orthogonaal tot de veelterm $\prod_{i=1}^{m}(x-x_i)$. Hieruit zou dus volgen:
+    \begin{equation*}
+        \int_{a}^{b}w(x)r_n(x)\prod_{i=1}^{m}(x-x_i)dx = 0,
+    \end{equation*}
+    wat in tegenspraak is met de aanname. De veronderstelling $m \leq n$ is dus onjuist, ofwel het residu heeft minstens $n+1$ tekenwisselingen in $(a,b)$.
+\end{prf}
+
+\newpage
+
+\subsubsection{Legendre-veeltermen}
+
+\vspace{0.5cm}
+
+\begin{theo}[Legendre-veeltermen]{theo:legendre_veeltermen}
+    De veeltermen $P_0(x),P_1(x),P_2(x),\ldots$ met $P_k(1) = 1$ die een orthogonale rij vormen voor het scalair product
+    \begin{equation*}
+        (p,q) = \int_{-1}^{1} w(x)p(x)q(x)dx
+    \end{equation*}
+    waarbij $w(x) = 1$, noemt men de Legendre-veeltermen. De veeltermen worden door volgende algemene uidrukking gegeven:
+    \begin{equation*}
+        P_k(x) = \frac{1}{2^k} \sum_{j=0}^{\lfloor k/2 \rfloor} (-1)^j \binom{k}{j} \binom{2k-2j}{k} x^{k-2j},
+    \end{equation*}
+    waarbij 
+    \begin{equation*}
+        A_k = \frac{(2k)!}{2^k(k!)^2}, \quad \|P_k\| = \sqrt{\frac{2}{2k+1}}
+    \end{equation*}
+    met $A_k$ de hoogstegraadscoëfficiënt en $\|\cdot\|$ de natuurlijke norm.
+\end{theo}
+
+\begin{theo}[Legendre-benadering]{theo:legendre_benadering}
+    De Legendre-bendaring over het interval $[-1,1]$ van een functie $f(x)$ wordt gegeven door:
+    \begin{equation*}
+        y_n(x) = \sum_{k=0}^n \alpha_kP_k(x) \quad \text{met} \quad \alpha_k = \frac{2k+1}{2}\int_{-1}^{1} f(x)P_k(x)dx.
+    \end{equation*}
+    Indien we de momenten $I_k = \int_{-1}^{1}x^kf(x)dx$ van de functie erbij halen, dan kunnen we de coëfficiënten $\alpha_k$ ook schrijven als:
+    \begin{align*}
+        \alpha_k 
+            &= \frac{2k+1}{2}\int_{-1}^{1} f(x)P_k(x)dx \\
+            % &= \frac{2k+1}{2}\int_{-1}^{1} f(x)\frac{1}{2^k} \sum_{j=0}^{\lfloor k/2 \rfloor} (-1)^j \binom{k}{j} \binom{2k-2j}{k} x^{k-2j}dx \\
+            &= \frac{2k+1}{2^{k+1}} \sum_{j=0}^{\lfloor k/2 \rfloor} (-1)^j \binom{k}{j} \binom{2k-2j}{k} \int_{-1}^{1} f(x)x^{k-2j}dx \\
+            &= \frac{2k+1}{2^{k+1}} \sum_{j=0}^{\lfloor k/2 \rfloor} (-1)^j \binom{k}{j} \binom{2k-2j}{k} I_{k-2j}. 
+    \end{align*}
+\end{theo}
+
+\newpage
+
+\subsubsection{Chebyshev-veeltermen}
+
+\vspace{0.5cm}
+
+\begin{theo}[Chebyshev-veeltermen]{theo:Chebyshev-veeltermen}
+    De veeltermen $T_0(x), T_1(x), T_2(x), \ldots$ met $T_k(1) = 1$ die een orthogonale rij vormen voor het scalair 
+    \begin{equation*}
+        (p,q) = \int_{-1}^{1} w(x)p(x)q(x)dx
+    \end{equation*}
+    waarbij $w(X) = \frac{1}{\sqrt{1-x^2}}$, noemt men de Chebyshev-veeltermen (van de eerste soort). De veeltermen worden door volgende goniometrische uitdrukking gegeven:
+    \begin{equation*}
+        T_k(x) = \cos(k\arccos(x)), \quad \text{voor} \ x \in [-1,1].
+    \end{equation*}
+    Hieruit volgt de orthogonaliteit van de veeltermen op het interval $[-1,1]$.
+    De algemene uitdrukking voor de Chebyshev-veeltermen is:
+    \begin{equation*}
+        T_k(x) = \frac{k}{2} \sum_{j=0}^{\lfloor k/2 \rfloor} (-1)^j \frac{(k-j-1)!}{j!(k-2j)!} (2x)^{k-2j}.
+    \end{equation*}
+    waarbij 
+    \begin{equation*}
+        \forall k \geq 1:\ A_k = 2^{k-1}, \quad \|T_k\| = \begin{cases}
+            \sqrt{\pi} & \text{indien } k = 0, \\
+            \sqrt{\frac{\pi}{2}} & \text{indien } k \neq 0.
+        \end{cases}
+    \end{equation*}
+    met $A_k$ de hoogstegraadscoëfficiënt en $\|\cdot\|$ de natuurlijke norm.
+\end{theo}
+
+\begin{theo}[Chebyshev-benadering]{theo:Chebyshev_benadering}
+    De Chebyshev-kleinste-kwadratenveelterm met graad $n$ voor een functie $f(x)$ is gelijk aan:
+    \begin{equation*}
+        y_n(x) = \sum_{k=0}^n \alpha_kT_k(x) \quad \text{met} \quad \alpha_k = \frac{1}{\|T_k\|^2}\int_{-1}^{1} \frac{f(x)T_k(x)}{\sqrt{1-x^2}}dx
+    \end{equation*}
+    We kunnen $\alpha_k$ ook schrijven als:
+    \begin{equation*}
+        \alpha_0 = \frac{1}{\pi}\int_{-1}^{1} \frac{f(x)T_0(x)}{\sqrt{1-x^2}}dx, \quad \alpha_k = \frac{2}{\pi}\int_{-1}^{1} \frac{f(x)T_k(x)}{\sqrt{1-x^2}}dx \quad \text{voor} \ k \geq 1.
+    \end{equation*}
+    De benaderingsfout of residu $r_n(x)$ van deze benadering is gelijk aan:
+    \begin{equation*}
+        r_n(x) \simeq -\alpha_{n+1}T_{n+1}(x).
+    \end{equation*}
+
+    \textbf{Opmerking:} In de literatuur wordt soms voor algemeenheid gebruikgemaakt van een licht gewijzigd sommatiesymbool:
+    \begin{equation*}
+        y_n(x) = {\sum_{k=0}^{n}}\sp{\prime}  \alpha_kT_k(x) 
+        := \frac{1}{2}\alpha_0T_0(x) + \sum_{k=1}^n \alpha_kT_k(x).
+    \end{equation*}
+    waardoor dan $\alpha_k$ dan in alle gevallen gelijk is aan $\frac{1}{\|T_k\|^2}\int_{-1}^{1} \frac{f(x)T_k(x)}{\sqrt{1-x^2}}dx$.
+\end{theo}
+
+\begin{theo}[Minimaxcriterium]{theo:minimaxcriterium}
+    Het minimaxcriterium zoekt een veelterm \( y_n \) van graad \( n \) die de maximale fout over \([a,b]\) minimaliseert:
+    \begin{equation*}
+        E_n = \max_{x\in[a,b]} |f(x) - y_n(x)|.
+    \end{equation*}
+    Als de functie $f$ continue is, bestaat zulke veelterm. \\
+
+    \textbf{Opmerking:} De term \( f(x) - y_n(x) \) komt overeen met het residu \( r_n(x) \) uit Stelling~\ref{lem:kleinste_kwadratenbenadering}.
+\end{theo}
+
+
+\begin{lem}[Borel]{lem:borel}
+    Voor elke functie $f(x)$ die continu is over het compacte interval $[a,b]$, bestaat er een veelterm $y_n(x)$ van graad $n$ of lager waarvoor geldt dat:
+    \begin{equation*}
+        \forall p_n \in P_n[a,b]: \max_{x\in[a,b]} |f(x) - y_n(x)| \leq \max_{x\in[a,b]} |f(x) - p_n(x)|.
+    \end{equation*}
+    De punten in het interval $[a,b]$ waar het maximum $E_n \left(= \max_{x\in[a,b]} |f(x) - y_n(x)|\right)$ wordt bereikt, worden extremaalpunten genoemd. Een punt waar $f(x) - y_n(x) = E_n$ noemt men een $+$punt, waar $f(x) - y_n = -E_n$ een $-$punt.
+\end{lem}
+
+\begin{lem}[Equioscillatiestelling]{lem:equioscillatiestelling}
+    Zij $f(x)$ een continue functie op een compact interval $[a,b]$ en zij $y_n(x)$ een veelterm van graad $n$. Dan is $y_n$ een beste benadering van graad $n$ volgens het minimaxcriterium als en alleen als er in het interval $[a,b]$ een rij van $n+2$ extremaalpunten bestaat die afwisselen tussen $+$punten en $-$punten. \\
+
+    \textbf{Opmerking:} Deze stelling geeft een karakterisering van de beste benadering.
+\end{lem}

@@ -8,13 +8,18 @@
 \contentsline {subsubsection}{\numberline {2.1}Metrische ruimte}{9}{subsubsection.0.2.1}%
 \contentsline {subsubsection}{\numberline {2.2}Vectorruimte}{10}{subsubsection.0.2.2}%
 \contentsline {subsubsection}{\numberline {2.3}Unitaire ruimte en orthogonaliteit}{13}{subsubsection.0.2.3}%
-\contentsline {subsection}{\numberline {3}Benadering door middel van veeltermen}{15}{subsection.0.3}%
-\contentsline {subsection}{\numberline {4}Discrete benadering op basis van meetdata}{15}{subsection.0.4}%
-\contentsline {subsection}{\numberline {5}Regularisatietechnieken}{15}{subsection.0.5}%
-\contentsline {section}{Data, Grafen en Eigenwaarden}{16}{section*.3}%
-\contentsline {subsection}{\numberline {6}Grafen en eigenwaarden in datawetenschappen}{17}{subsection.0.6}%
-\contentsline {subsection}{\numberline {7}Eigenwaardenalgoritmes}{17}{subsection.0.7}%
-\contentsline {section}{Niet-lineaire Benaderingsproblemen}{18}{section*.4}%
-\contentsline {subsection}{\numberline {8}Niet-lineaire benaderingsproblemen}{19}{subsection.0.8}%
-\contentsline {subsection}{\numberline {9}Optimalisatie-algoritmes}{19}{subsection.0.9}%
-\contentsline {subsection}{\numberline {10}Ijle representatie en benaderingen}{19}{subsection.0.10}%
+\contentsline {subsection}{\numberline {3}Benadering door middel van veeltermen}{17}{subsection.0.3}%
+\contentsline {subsubsection}{\numberline {3.1}Orthogonale veeltermen}{17}{subsubsection.0.3.1}%
+\contentsline {subsubsection}{\numberline {3.2}Legendre-veeltermen}{22}{subsubsection.0.3.2}%
+\contentsline {subsubsection}{\numberline {3.3}Chebyshev-veeltermen}{23}{subsubsection.0.3.3}%
+\contentsline {subsection}{\numberline {4}Benadering door middel van splinefuncties}{24}{subsection.0.4}%
+\contentsline {subsection}{\numberline {5}Discrete benadering op basis van meetdata}{24}{subsection.0.5}%
+\contentsline {subsection}{\numberline {6}Regularisatietechnieken}{24}{subsection.0.6}%
+\contentsline {section}{Data, Grafen en Eigenwaarden}{25}{section*.3}%
+\contentsline {subsection}{\numberline {7}Grafen en eigenwaarden in datawetenschappen}{26}{subsection.0.7}%
+\contentsline {subsection}{\numberline {8}Eigenwaardenalgoritmes}{26}{subsection.0.8}%
+\contentsline {section}{Niet-lineaire Benaderingsproblemen}{27}{section*.4}%
+\contentsline {subsection}{\numberline {9}Niet-lineaire benaderingsproblemen}{28}{subsection.0.9}%
+\contentsline {subsection}{\numberline {10}Optimalisatie-algoritmes}{28}{subsection.0.10}%
+\contentsline {subsection}{\numberline {11}Ijle representatie en benaderingen}{28}{subsection.0.11}%
+\contentsline {section}{Appendix}{29}{section*.5}%

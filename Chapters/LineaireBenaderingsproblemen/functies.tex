@@ -158,7 +158,7 @@
 
 \vspace{0.5cm}
 
-\begin{theo}[Unitaire ruimte]
+\begin{theo}[Unitaire ruimte]{theo:unitaire_ruimte}
     Men noemt een vectorruimte $V$ over de complexe getallen unitair als er met elk paar elementen $\vec{x}, \vec{y} \in V$ een complex getal $(\vec{x},\vec{y})$ overeenstemt dat voldoet aan de volgende eigenschappen:
     \begin{enumerate}
         \item $\forall a \in \mathbb{C}: \ (\vec{x},a\vec{y}) = a(\vec{x},\vec{y})$
@@ -232,3 +232,121 @@
     \end{equation*}
     En dus is $\| \vec{x} + \vec{y} \| < 2$.
 \end{prf}
+
+\begin{theo}[Orthogonaliteit]{theo:orthogonaliteit}
+    Twee vectoren $\vec{x}$ en $\vec{y}$ in een unitaire ruimte $V$ zijn orthogonaal als hun scalair product nul is, of nog als:
+    \begin{equation*}
+        \vec{x} \perp \vec{y} \ \Rightarrow \ (\vec{x},\vec{y}) = 0.
+    \end{equation*}
+    \vspace{-0.5cm}
+\end{theo}
+
+\begin{lem}[Pythagoras]{lem:Pythagoras}
+    Wanneer $\vec{x}$ en $\vec{y}$ orthogonaal zijn in een unitaire ruimte $V$, dan geldt t\@.o\@.v\@. de natuurlijke norm in $V$ dat
+    \begin{equation*}
+        \| \vec{x} + \vec{y} \|^2 = \| \vec{x} \|^2 + \| \vec{y} \|^2.
+    \end{equation*}
+    \vspace{-0.5cm}
+\end{lem}
+
+\begin{prf}[Pythagoras]{prf:Pythagoras}
+    Het gestelde volgt triviaal uit een expansie van $\| \vec{x} + \vec{y} \|^2$, namelijk:
+    \begin{align*}
+        \| \vec{x} + \vec{y} \|^2 
+            &= (\vec{x} + \vec{y},\vec{x} + \vec{y}) \\
+            &= (\vec{x},\vec{x}) + (\vec{y},\vec{y}) + 2(\vec{x},\vec{y}) \\
+            &= \| \vec{x} \|^2 + \| \vec{y} \|^2.
+    \end{align*}
+    \vspace{-1cm}
+\end{prf}
+
+\begin{lem}[Hermitiaans positief definiet]{lem:hermitiaans positief definiet}
+    Neem de grammatrix $G$ van een stel vectoren $\vec{a}_1,\ldots,\vec{a}_n$, namelijk:
+    \begin{equation*}
+        G = G(\vec{a}_1,\ldots,\vec{a}_n) = 
+        \begin{bmatrix}
+            (\vec{a}_1,\vec{a}_1) & \cdots & (\vec{a}_1,\vec{a}_n) \\
+            \vdots & \ddots & \vdots \\
+            (\vec{a}_n,\vec{a}_1) & \cdots & (\vec{a}_n,\vec{a}_n)
+        \end{bmatrix}.
+    \end{equation*}
+    Indien deze matrix Hermitiaans positief definiet is, dan zijn de vectoren $\vec{a}_1,\ldots,\vec{a}_n$ lineair onafhankelijk. Hieruit volgt dat de matrix $G$ een inverteerbare matrix is (als en slechts als de vectoren lineair onafhankelijk zijn).
+\end{lem}
+
+\begin{prf}[Hermitiaans positief definiet]{prf:hermitiaans positief definiet}
+    \begin{itemize}
+        \item 
+            \textbf{Hermitiaans:} Uit de derde voorwaarde voor een scalair product (zoals gezien in Definitie~\ref{theo:unitaire_ruimte}) volgt dat $G = G^*$, dus G is een Hermitiaanse martix.
+        \item 
+            \textbf{Positief definitief:} Zij $v = \begin{bmatrix}
+                v_1 & \cdots & v_n
+            \end{bmatrix}$
+            een vector in $\mathbb{C}^n$. Steunend op de lineairiteit van het scalair product kunnen we de uitdrukking $v^*Gv$ schrijven als:
+            \begin{align*}
+                v^*Gv 
+                    &= \begin{bmatrix}
+                        v_1 & \cdots & v_n
+                    \end{bmatrix}
+                    \begin{bmatrix}
+                        (\vec{a}_1,\vec{a}_1) & \cdots & (\vec{a}_1,\vec{a}_n) \\
+                        \vdots & \ddots & \vdots \\
+                        (\vec{a}_n,\vec{a}_1) & \cdots & (\vec{a}_n,\vec{a}_n)
+                    \end{bmatrix}
+                    \begin{bmatrix}
+                        v_1 \\ \vdots \\ v_n
+                    \end{bmatrix} \\
+                    &= \begin{bmatrix}
+                        v_1 & \cdots & v_n
+                    \end{bmatrix}
+                    \begin{bmatrix}
+                        (\vec{a}_1, v_1\vec{a}_1, + \cdots + v_n\vec{a}_n) \\
+                        \vdots \\
+                        (\vec{a}_n, v_1\vec{a}_1, + \cdots + v_n\vec{a}_n)
+                    \end{bmatrix} \\
+                    &= \left(\sum_{i=1}^n v_i\vec{a}_i, \sum_{j=1}^n v_j\vec{a}_j\right) = \left\| \sum_{i=1}^n v_i\vec{a}_i \right\|^2.
+            \end{align*}
+            Als $\{\vec{a}_1,\ldots,\vec{a}_n\}$ lineair onafhankelijk zijn, dan geldt voor $v\neq 0$ dat $\sum_{i=1}^n v_i\vec{a}_i \neq 0$ en dus $v^*Gv > 0$. Dit bewijst dat $G$ positief definiet is.
+    \end{itemize}
+\end{prf}
+
+\begin{pro}[Orthogonale projector]{pro:orthogonale_projector}
+    Een projector $P$ is orthogonaal als en alleen als:
+    \begin{equation*}
+        \forall \vec{v},\vec{w} \in V: \ (P\vec{v},\vec{w}) = (\vec{v},P\vec{w}).
+    \end{equation*}
+    \vspace{-0.5cm}
+\end{pro}
+
+\begin{prf}[Orthogonale projector]{prf:orthogonale_projector}
+    ``$\Rightarrow$'': Als $\mathcal{R}(P)$ en $\mathcal{N}(P)$ orthogonaal zijn, dan is:
+    \begin{equation*}
+        \forall \vec{v},\vec{w} \in V: \ (P\vec{v},(I-P)\vec{w}) = ((I-P)\vec{v},P\vec{w}) = \vec{0},
+    \end{equation*}
+    waaruit volgt dat $(P\vec{v},\vec{w}) = (P\vec{v}, P\vec{w}) = (\vec{v},P\vec{w})$. \\
+    
+    ``$\Leftarrow$'': Neem willekeurige $\vec{x} = P\vec{u} \in \mathcal{R}(P)$ en $\vec{y} \in \mathcal{N}(P)$. Dan geldt:
+    \begin{equation*}
+        (\vec{x},\vec{y}) = (P\vec{u},\vec{y}) = (\vec{u},P\vec{y}) = (\vec{u},\vec{0}) = 0,
+    \end{equation*}
+    wat de orthogonaliteit bewijst.
+\end{prf}
+
+\newpage
+
+\begin{alg}[Gram-Schmidt algoritem in een unitaire ruimte]{alg:gram_schmidt_unitaire_ruimte}
+    \begin{tcolorbox}[colback=white, colframe=gray, arc=0mm] 
+        \begin{algorithmic}[1]
+        \For{$j = 1$ to $n$}
+            \State $\vec{v}_j = \vec{a}_j$
+            \For{$i = 1$ to $j - 1$}
+                \State $r_{ij} = (\vec{q}_i,\vec{a}_j)$
+                \State $\vec{v}_j = \vec{v}_j - r_{ij} \vec{q}_i$  \ ($= \vec{a}_j - P_{\vec{q}_1, \ldots, \vec{q}_{j-1}}\vec{a}_j$)
+            \EndFor
+            \State $r_{jj} = \|\vec{v}_j\|_2$
+            \State $\vec{q}_j = \vec{v}_j / r_{jj}$
+        \EndFor
+        \end{algorithmic}
+    \end{tcolorbox}
+    \vspace{0.3cm}
+    \textbf{Opmerking:} In vergelijking tot Algoritme~\ref{alg:Gram-Schmidt} zijn inwendige producten tussen vectoren in $\mathbb{C}^n$ vervangen door scalaire producten in $V$ en de Euclidische norm door de natuurlijke norm geïnduceerd door het scalair product, dit is $\|\cdot\| = \sqrt{(\cdot,\cdot)}$.
+\end{alg}
