@@ -13,13 +13,15 @@
 \contentsline {subsubsection}{\numberline {3.2}Legendre-veeltermen}{22}{subsubsection.0.3.2}%
 \contentsline {subsubsection}{\numberline {3.3}Chebyshev-veeltermen}{23}{subsubsection.0.3.3}%
 \contentsline {subsection}{\numberline {4}Benadering door middel van splinefuncties}{24}{subsection.0.4}%
-\contentsline {subsection}{\numberline {5}Discrete benadering op basis van meetdata}{24}{subsection.0.5}%
-\contentsline {subsection}{\numberline {6}Regularisatietechnieken}{24}{subsection.0.6}%
-\contentsline {section}{Data, Grafen en Eigenwaarden}{25}{section*.3}%
-\contentsline {subsection}{\numberline {7}Grafen en eigenwaarden in datawetenschappen}{26}{subsection.0.7}%
-\contentsline {subsection}{\numberline {8}Eigenwaardenalgoritmes}{26}{subsection.0.8}%
-\contentsline {section}{Niet-lineaire Benaderingsproblemen}{27}{section*.4}%
-\contentsline {subsection}{\numberline {9}Niet-lineaire benaderingsproblemen}{28}{subsection.0.9}%
-\contentsline {subsection}{\numberline {10}Optimalisatie-algoritmes}{28}{subsection.0.10}%
-\contentsline {subsection}{\numberline {11}Ijle representatie en benaderingen}{28}{subsection.0.11}%
-\contentsline {section}{Appendix}{29}{section*.5}%
+\contentsline {subsubsection}{\numberline {4.1}Splines}{24}{subsubsection.0.4.1}%
+\contentsline {subsubsection}{\numberline {4.2}B-splines}{25}{subsubsection.0.4.2}%
+\contentsline {subsection}{\numberline {5}Discrete benadering op basis van meetdata}{29}{subsection.0.5}%
+\contentsline {subsection}{\numberline {6}Regularisatietechnieken}{29}{subsection.0.6}%
+\contentsline {section}{Data, Grafen en Eigenwaarden}{30}{section*.3}%
+\contentsline {subsection}{\numberline {7}Grafen en eigenwaarden in datawetenschappen}{31}{subsection.0.7}%
+\contentsline {subsection}{\numberline {8}Eigenwaardenalgoritmes}{31}{subsection.0.8}%
+\contentsline {section}{Niet-lineaire Benaderingsproblemen}{32}{section*.4}%
+\contentsline {subsection}{\numberline {9}Niet-lineaire benaderingsproblemen}{33}{subsection.0.9}%
+\contentsline {subsection}{\numberline {10}Optimalisatie-algoritmes}{33}{subsection.0.10}%
+\contentsline {subsection}{\numberline {11}Ijle representatie en benaderingen}{33}{subsection.0.11}%
+\contentsline {section}{Appendix}{34}{section*.5}%

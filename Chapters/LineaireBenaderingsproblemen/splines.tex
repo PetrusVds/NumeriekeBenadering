@@ -1,0 +1,240 @@
+\subsubsection{Splines}
+
+\vspace{0.5cm}
+
+\begin{theo}[Splinefunctie]{theo:Splinefunctie}
+    Zij een strikt stijgende rij van reële getallen gegeven, die voldoet aan
+    \begin{equation*}
+        a = t_o < t_1 < t_2 < \ldots < t_{n-1} < t_n = b.
+    \end{equation*}
+    Een spline functie $s(x)$ van graad $k > 0$ of orde $k+1$ met knooppunten $t_0,\ldots,t_n$ is een functie gedefinieerd op $[a,b]$ die voldoet aan de volgende eigenschappen:
+    \begin{enumerate}
+        \item in elk interval $[t_i,t_{i+1}]$ is $s(x)$ een veelterm van graad $k$ of lager;
+        \item de functie $s(x)$ en haar afgeleiden tot en met orde $k-1$ zijn continu in $[a,b]$.
+    \end{enumerate}
+\end{theo}
+
+\begin{lem}[Dimensie van de ruimte van splinefuncties]{lem:Dimensie_van_de_ruimte_van_splinefuncties}
+    De vectorruimte van de splinefuncties van graad $k$ met knooppunten $t_0,\ldots,t_n$ heeft dimensie $n+k$.    
+\end{lem}
+
+\begin{app}[Interpolerende splinefunctie]{app:Interpolerende_splinefunctie}
+    Een splinefunctie wordt \textbf{interpolerend} genoemd als hij in de knoopunten $t_0,\ldots,t_n$ bepaalde opgegeven waarden $f_0,\ldots,f_n$ aanneemt.
+\end{app}
+
+\begin{app}[Natuurlijke splinefunctie]{app:Natuurlijke_splinefunctie}
+    Een \textbf{natuurlijke splinefunctie} is een splinefunctie van oneven graad $\exists m \geq 1:\ k = 2m+1$, waarvoor geldt dat 
+    \begin{equation*}
+        \forall j \in [m+1,2m]:\ s^{(j)}(a) = s^{(j)}(b) = 0.
+    \end{equation*}
+    \vspace{0.1cm}
+
+    \textbf{Opmerking:} De meest courant gebruikte interpolerende splinefuncties zijn natuurlijke, interpolerende splinefuncties, d\@.w\@.z\@. dat dergelijke functie behoort tot oneven graad $k = 2m+1$ en voldoet aan:
+    \begin{equation*}
+        \forall j \in [0,m]:\ s^{(j)}(a) = s^{(j)}(b) = 0 \quad \text{en} \quad \forall i \in [0,n]:\ s(t_i) = f_i.
+    \end{equation*}
+    Dat zijn $(n+1) + 2m = n + k$ bijkomende voorwaarden en dus volgt, vermits de splimeruimte dimensie $n+k$ heeft (Stelling~\ref{lem:Dimensie_van_de_ruimte_van_splinefuncties}), dat deze functie eenduidig bepaald is.
+\end{app}
+
+\begin{app}[Periodieke splinefunctie]{app:Periodieke_splinefunctie}
+    Een \textbf{periodieke splinefunctie} is een splinefunctie die voldoet aan
+    \begin{equation*}
+        \forall j \in [0,k-1]:\ s^{(j)}(a) = s^{(j)}(b).
+    \end{equation*}
+    \vspace{-0.5cm}
+\end{app}
+
+\subsubsection{B-splines}
+
+\vspace{0.5cm}
+
+\begin{theo}[Gedeelde differentie]{theo:Gedeelde_differentie}
+    De gedeelde differentie van orde nul van een functie $f$ in een punt $x_i$ is gelijk aan 
+    \begin{equation*}
+        f[x_i] = f(x_i) = f_i.
+    \end{equation*}
+    De gedeelde differentie van orde $k=j-i$ voor $j>i$ van een functie $f$ in de verschillende punten $x_i,\ldots,x_j$ wordt gedefinieerd als 
+    \begin{equation*}
+        f[x_i,\ldots,x_j] = \frac{f[x_{i+1},\ldots,x_j] - f[x_i,\ldots,x_{j-1}]}{x_j - x_i} \left(= \Delta_t^k(x_i,\ldots,x_{i+k}) f(t)\right).
+    \end{equation*}
+    \vspace{-0.4cm}
+\end{theo}
+
+\begin{pro}[Gedeelde differentie]{pro:Gedeelde_differentie}
+    \begin{enumerate}
+        \item 
+            De gedeelde differentie $f[x_i,\ldots,x_j]$ is lineair in $f$, d\@.w\@.z\@.
+            \begin{equation*}
+                (af + bg)[x_i,\ldots,x_j] = a f[x_i,\ldots,x_j] + b g[x_i,\ldots,x_j].
+            \end{equation*}
+        \item
+            \textbf{Newton-vorm}: De interpolerende veelterm van graad $j-i$ door $(x_i,f_i), \ldots, (x_j,f_j)$ is gelijk aan:
+            \begin{equation*}
+                p_{j-i}(x) = a_0 + a_1(x-x_i) + a_2(x-x_i)(x-x_{i+1}) + \ldots + a_{j-i}\prod_{k=0}^{j-i-1}(x-x_{i+k}),
+            \end{equation*}
+            waarbij de coëfficiënten worden gegeven door:
+            \begin{equation*}
+                a_k = f[x_i,\ldots,x_{i+k}]
+            \end{equation*}
+        \item 
+            De gedeelde differentie $f[x_i,\ldots,x_j]$ is continu in de argumenten $x_i,\ldots,x_j$ als $f(x)$ $(j-i)$-maal differentieerbaar is met continue $(j-i)$-de afgeleide.
+        \item 
+            De gedeelde differentie van orde $j-i$ van een veelterm $p_m(x)$ van graad $m$ met $m < j -i$, heeft de waarde nul, d\@.w\@.z\@. dat
+            \begin{equation*}
+                \exists m < j -i:\ p_m[x_i,\ldots,x_j] = 0.
+            \end{equation*}
+        \item 
+            De gedeelde differentie $f[x_i,\ldots,x_j]$ is een lineaire samenstelling van de functie waarden $f_i,\ldots,f_j$, d\@.w\@.z\@. dat
+            \begin{equation*}
+                f[x_i,\ldots,x_j] = \sum_{k=i}^{j} \lambda_k f_k.
+            \end{equation*}
+        \item 
+            De \textbf{formule van Leibniz} voor de gedeelde differentie van een product van twee functies luidt als volgt:
+            \begin{equation*}
+                f(x) = g(x)h(x) \ \Rightarrow \ f[x_i,\ldots,x_j] = \sum_{k=i}^{j} g[x_i,\ldots,x_k]h[x_k,\ldots,x_j].
+            \end{equation*}
+    \end{enumerate}
+\end{pro}
+
+\begin{theo}[Afgeknotte machtsfunctie]{theo:afgeknotte_machtsfunctie}
+    Een veelgebruitke functie in de numerieke wiskunde is de afgeknotte machtsfunctie, die gedefinieerd is als
+    \begin{equation*}
+        (t-x)^k_+ = \begin{cases}
+            (t-x)^k & \text{als } t > x, \\
+            0 & \text{als } t \leq x.
+        \end{cases}
+    \end{equation*}    
+\end{theo}
+
+\begin{theo}[Gewone B-spline]{theo:Gewone_B-spline}
+    De gewone B-spline van graad $k$ of orde $k+1$ wordt gegeven door:
+    \begin{equation*}
+        M_{i,k+1}(x) = \Delta_t^{k+1}(t_i,\ldots,t_{i+k+1}) (t-x)^k_+.
+    \end{equation*}
+    \vspace{-0.3cm}
+\end{theo}
+
+\begin{theo}[Genormaliseerde B-spline]{theo:Genormaliseerde_B-spline}
+    De Genormaliseerde B-spline van graad $k$ of orde $k+1$ wordt gegeven door:
+    \begin{equation*}
+        N_{i,k+1}(x) = (t_{i+k+1} - t_i) M_{i,k+1}(x).
+    \end{equation*}
+    \vspace{-0.3cm}
+\end{theo}
+
+\begin{lem}[Geldigheid van B-splines]{lem:Geldigheid_van_B-splines}
+    De gewone B-splinefunctie $M_{i,k+1}(x)$ en de genormaliseerde B-splinefunctie $N_{i,k+1}(x)$ zijn splinefuncties.
+\end{lem}
+
+\begin{prf}[Geldigheid van B-splines]{prf:Geldigheid_van_B-splines}
+    Herneem de eigenschap dat de gedeelde differentie een lineaire samenstelling is van functiewaarden $f_i,\ldots,f_j$ (zoals gezien in Propositie~\ref{pro:Gedeelde_differentie}), namelijk:
+    \begin{equation*}
+        f[x_i,\ldots,x_j] = \sum_{k=i}^{j} \lambda_k f_k.
+    \end{equation*}
+    De functie $M_{i,k+1}(x)$ is dus een lineaire samenstelling van afgeknotte-machtsfuncties van graad $k$ van de volgende vorm:
+    \begin{equation*}
+        1, x, x^2, \ldots, x^k, (t_1 - x)^k_+, \ldots, (t_{n-1} - x)^k_+.
+    \end{equation*}
+    Deze lineaire samenstelling vormt een basis van de vectorruimte van de splinefuncties van graad $k$ met knooppunten $t_0,\ldots,t_n$ en dus is $M_{i,k+1}(x)$ een splinefunctie. Hetzelfde geldt voor $N_{i,k+1}(x)$.
+\end{prf}
+
+\begin{pro}[B-splines]{pro:B-splines}
+    \begin{enumerate}
+        \item 
+            Voor een gegeven $i$ zijn de B-splines van orde 1 als volgt gedefinieerd:
+            \begin{itemize}
+                \item $M_{i,1}(x) = \begin{cases}
+                    \frac{1}{t_{i+1}-t_i} & \text{als } t_i \leq x < t_{i+1}, \\
+                    0 & \text{anders},
+                \end{cases}$
+                \item $N_{i,1}(x) = \begin{cases}
+                    1 & \text{als } t_i \leq x < t_{i+1}, \\
+                    0 & \text{anders}.
+                \end{cases}$
+            \end{itemize}
+        \item 
+            Voor een gegeven $i$ en $k\geq 1$, geldt voor $x \leq t_i$ of $(x \geq t_{i+k+1})$ dat
+            \begin{equation*}
+            M_{i,k+1}(x) = 0
+            \end{equation*}
+        \item 
+            Voor de gewone en de genormaliseerde B-splines gelden volgende recursiebetrekkingen:
+            \begin{itemize}
+                \item $M_{i,k+1}(x) = \frac{x-t_i}{t_{i+k+1}-t_i} M_{i,k}(x) + \frac{t_{i+k+1}-x}{t_{i+k+1}-t_{i}} M_{i+1,k}(x)$,
+                \item $N_{i,k+1}(x) = \frac{x-t_i}{t_{i+k}-t_i} N_{i,k}(x) + \frac{t_{i+k+1}-x}{t_{i+k+1}-t_{i+1}} N_{i+1,k}(x)$.
+            \end{itemize}
+        \item 
+            Voor een gegeven $k\geq 1$ en $x \in (t_i,t_{i+k+1})$ geldt dat
+            \begin{equation*}
+                M_{i,k+1}(x) > 0
+            \end{equation*}
+    \end{enumerate}
+\end{pro}
+
+\begin{prf}[B-splines]{prf:B-splines}
+    \begin{enumerate}
+        \item
+            Per definitie van $M_{i,k+1}(x)$ geldt dat
+            \begin{align*}
+                M_{i,1}(x) 
+                    &= \Delta_t^1(t_i,t_{i+1}) (t-x)^0_+ \\
+                    &= \frac{1}{t_{i+1}-t_i} (t-x)_+ \\
+                    &= \frac{(t_{i+1} - x)^0_+ - (t_i - x)^0_+}{t_{i+1}-t_i}.
+            \end{align*} 
+            Het bovenste deel van de breuk is gelijk aan 1 als $t_i \leq x < t_{i+1}$ en 0 anders, hierdoor volgt dus:
+            \begin{equation*}
+                M_{i,1}(x) = \begin{cases}
+                    \frac{1}{t_{i+1}-t_i} & \text{als } t_i \leq x < t_{i+1}, \\
+                    0 & \text{anders}.
+                \end{cases}
+            \end{equation*}
+            Hieruit volgt ook $N_{i,1}(x)$, sinds dit neer komt op vermenigvuldigen met $(t_{i+1} - t_i)$.
+        \item 
+            We leidden vroeger reeds af dat 
+            \begin{equation*}
+                M_{i,k+1}(x) = \sum_{s=i}^{i+k+1} \lambda_s f_s \quad \text{met} \quad f_s = (t_s - x)^k_+.
+            \end{equation*}
+            Wanneer nu $x \geq t_{i+k+1}$, dan zijn alle $f_s$ in bovenstaande formule nul. Als $x \leq t_i$, dan mogen we in de uitdrukking voor $f_s$ het vervangen door equivalente $(t-x)^k$ en dit voor elke $s$. De gewone B-spline wordt dan:
+            \begin{equation*}
+                M_{i,k+1}(x) = \Delta_t^{k+1} (t_i,\ldots,t_{i+k+1}) (t-x)^k.
+            \end{equation*}
+            Dat is identiek nul, want differentie van orde $k+1$ avn een veelterm van graad $k$ is nul.
+        \item 
+            Voor $k \geq 1$ kunnen we schrijven dat:
+            \begin{equation*}
+                (t-x)^k_+ = (t-x)^{k-1}_+ (t-x).
+            \end{equation*}
+            We vullen dit in in de definitie van $M_{i,k+1}(x)$ en passen de formule van Leibniz voor gedeelde differentie  (zie Eigenschap~\ref{pro:Gedeelde_differentie}) toe, namelijk:
+            \begin{equation*}
+                f(x) = g(x)h(x) \ \Rightarrow \ f[x_i,\ldots,x_j] = \sum_{k=i}^{j} g[x_i,\ldots,x_k]h[x_k,\ldots,x_j].
+            \end{equation*}
+            Omwille van de factor $(t-x)$, een veelterm van graad 1 in $t$, bevatten de meeste termen in de bovenstaande som een factor die gelijk is aan nul. We vinden:
+            \begin{align*}
+                M_{i_k+1}(x) 
+                    &= \Delta_t^{k+1}(t_i,\ldots,t_{i+k+1}) (t-x)^k_+ \\
+                    &= \Delta_t^{k+1}(t_i,\ldots,t_{i+k+1}) \{(t-x)^{k-1}_+ (t-x)\} \\
+                    &= \Delta_t^{k+1}(t_i,\ldots,t_{i+k+1}) (t-x)^{k-1}_+ \cdot \Delta^0_t(t_{i+k+1})(t-x) + \\ 
+                    &   \quad \quad \Delta_t^{k}(t_i,\ldots,t_{i+k})(t-x)^{k-1}_+ \cdot \Delta^1_t(t_{i+k},t_{i+k+1})(t-x) \\
+                    &= \Delta_t^{k+1}(t_i,\ldots,t_{i+k+1}) (t-x)^{k-1}_+(t_{i+k+1}-x) + M_{i,k}(x) 
+            \end{align*}
+            Men gebruikt nu de recursieve definitie van gedeelde differentie, om de differentie van orde $k+1$ in bovenstaande uitdrukking te schrijven als een lineaire combinatie van twee gedeelde differenties van orde $k$. Rekening houdend met de definitie van B-spline, verkrijgt men:
+            \begin{equation*}
+                M_{i,k+1}(x) =  \frac{M_{i+1,k}(x) - M_{i,k}(x)}{t_{i+k+1}-t_i}(t_{i+k+1}-x) + M_{i,k}(x).
+            \end{equation*}
+            Hieruit volgt de recursiebetrekking voor $M_{i,k+1}(x)$. De recursiebetrekking voor $N_{i,k+1}(x)$ volgt op analoge wijze.
+        \item 
+            We geven een bewijs gebaseerd op de recursiebetrekking en maken gebruik van volledige inductie. \\ 
+            
+            Voor $k=1$ luidt de recursiebetrekking
+            \begin{equation*}
+                M_{i,2}(x) = \frac{x-t_i}{t_{i+2}-t_i} M_{i,1}(x) + \frac{t_{i+2}-x}{t_{i+2}-t_{i+1}} M_{i+1,1}(x).
+            \end{equation*}
+            Schrijven we het rechterlid als $AB + CD$, dan is $A >0$ voor $x \in (t_i,\infty)$, $B>0$ voor $x\in [t_i,t_{i+1})$ en nul daarbuiten, $C>0$ voor $x \in (-\infty,t_{i_2})$, $D>0$ voor $x\in [t_{i_1},t_{i+2})$ en nul daarbuiten. Uit dit alles volgt dat $M_{i,2}(x) >0$ als $x \in (t_i,t_{i+2})$.  \\
+
+            Voor de inductie stap bekijken we de recursiebetrekking $M_i^{k+1}$,
+            \begin{equation*}
+                M_{i,k+1}(x) = \frac{x-t_i}{t_{i+k+1}-t_i} M_{i,k}(x) + \frac{t_{i+k+1}-x}{t_{i+k+1}-t_{i}} M_{i+1,k}(x).
+            \end{equation*}
+            Schrijven we ook hier het rechterlid als $AB + CD$, dan is $A >0$ voor $x \in (t_i,\infty)$, $B>0$ als $x\in [t_i,t_{i+k})$ en nul daarbuiten, $C>0$ voor $x \in (-\infty,t_{i+k+1})$, $D>0$ als $x\in [t_{i+k},t_{i+k+1})$ en nul daarbuiten.  Er volgt dat $M_{i,k+1}(x) >0$ als $x \in (t_i,t_{i+k+1})$.
+    \end{enumerate}
+\end{prf}
