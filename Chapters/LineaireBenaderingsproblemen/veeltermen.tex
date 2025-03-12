@@ -93,6 +93,14 @@
 
 
 \begin{prf}[Eigenwaarden en tridiagonale matrix]{prf:Eigenwaarden_tridiagonale_matrix}  
+    Herneem Stelling~\ref{lem:Orthogonale_veeltermen_reeel}, deze fundamentele recursiebetrekking kan herschreven worden als:
+    \begin{equation*}
+        \beta_k\phi_{k-2}(x) + \alpha_k\phi_{k-1}(x) + \frac{1}{\lambda_k}\phi_k(x) = x\phi_{k-1}(x).
+    \end{equation*}
+    Stel nu $v_k = \beta_{k+1}$ en $\mu_k = \frac{1}{\lambda_k}$, dan wordt dit:
+    \begin{equation*}
+        v_{k-1}\phi_{k-2}(x) + \alpha_k\phi_{k-1}(x) + \mu_k\phi_k(x) = x\phi_{k-1}(x).
+    \end{equation*}
     Definieer de $n \times n$ tridiagonale matrix $A$ en de $n$-vector $\Phi(x)$ als:
     \begin{equation*}
         A = \begin{bmatrix}
@@ -111,15 +119,7 @@
             \phi_{n-1}(x)
         \end{bmatrix}.
     \end{equation*}
-    De fundamentele recursiebetrekking kan herschreven worden als:
-    \begin{equation*}
-        \beta_k\phi_{k-2}(x) + \alpha_k\phi_{k-1}(x) + \frac{1}{\lambda_k}\phi_k(x) = x\phi_{k-1}(x).
-    \end{equation*}
-    Stel nu $v_k = \beta_{k+1}$ en $\mu_k = \frac{1}{\lambda_k}$, dan wordt dit:
-    \begin{equation*}
-        v_{k-1}\phi_{k-2}(x) + \alpha_k\phi_{k-1}(x) + \mu_k\phi_k(x) = x\phi_{k-1}(x).
-    \end{equation*}
-    Gebruik makend van bovenstaande betrekking, kan men het matrix-vectorproduct $A\Phi(x)$ vereenvoudigen tot:
+    Gebruik makend van de herwerkte fundamentele recursiebetrekking, kan men het matrix-vectorproduct $A\Phi(x)$ vereenvoudigen tot:
     \begin{equation*}
         A\Phi(x) = x\begin{bmatrix}
             \phi_1(x) \\
@@ -155,6 +155,7 @@
     \begin{equation*}
         r_n(x) = f(x) - y_n(x) \simeq -\alpha_{n+1}\phi_{n+1}(x).
     \end{equation*}
+    \vspace{-0.5cm}
 \end{lem}
 
 \begin{lem}[Interpolerende eigenschap van de kleinste-kwadratenbenadering]{lem:interpolerende_eigenschap_kleinste_kwadratenbenadering}

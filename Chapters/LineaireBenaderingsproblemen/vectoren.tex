@@ -40,7 +40,7 @@
 \begin{app}[Projector]{app:projector}
     Stel $v \in \mathbb{C}^m$ een willekeurige vector en $P \in \mathbb{C}^{m \times m}$ een projector, dan is $Pv \in \mathcal{R}(P)$ olgens de definitie van het bereik, en is $(I - P)v \in \mathcal{N}(P)$, omdat 
     \begin{equation*}
-        P(I - P)v = (P - P^2)v \overset{\text{idempotent}}{=} (P-P)v = 0
+        P(I - P)v = (P - P^2)v \overset{P^2 = P}{=} (P-P)v = 0
     \end{equation*}
     We kunnen dus $v$ ontbinden in componenten volgens $\mathcal{R}(P)$ en $\mathcal{N}(P)$ als
     \begin{equation*}
@@ -80,12 +80,16 @@
 \end{theo}
 
 \begin{theo}[Orthogonale projector]{theo:orthogonale_projector}
-    Een projector $P$ is orthogonaal indien $\mathcal{R}(P)$ en $\mathcal{N}(P)$ onderling orthogonale ruimte zijn. Een prokector die niet orthogonaal is, noemen we een scheve projector.
+    Een projector $P$ is orthogonaal indien $\mathcal{R}(P)$ en $\mathcal{N}(P)$ onderling orthogonale ruimte zijn, m\@.a\@.w\@.
+    \begin{equation*}
+        P \ \text{is een orthogonale projector} \ \Leftrightarrow \ P = P^*
+    \end{equation*} 
+    Een projector die niet orthogonaal is, noemen we een scheve projector.
 \end{theo}
 
-\begin{pro}[Orthogonale projector]{pro:orthogonale_projector}
-    Een projector $P$ is orthogonaal als en alleen als $P = P^*$.
-\end{pro}
+% \begin{pro}[Orthogonale projector]{pro:orthogonale_projector}
+%     Een projector $P$ is orthogonaal als en alleen als $P = P^*$.
+% \end{pro}
 
 \begin{prf}[Orthogonale projector]{prf:orthogonale_projector}
     ``$\Rightarrow$'': Beschouw een orthonormale basis $\{q_1, \ldots, q_n\}$ van $\mathcal{R}(P)$ en een orthonormale basis $\{q_{n+1}, \ldots, q_m\}$ van $\mathcal{N}(P)$. Omdat volgens de definitie beide ruimten orthogonaal zijn, volgt dat
@@ -109,8 +113,6 @@
     De ruimten $\mathcal{R}(P)$ en $\mathcal{N}(P)$ zijn dus orthogonaal.
     \vspace{-0.3cm}
 \end{prf}
-
-\newpage
 
 \subsubsection{QR-factorisatie}
 
@@ -172,26 +174,49 @@
 \begin{app}[Herorthogonalisatie van Gram-Schmidt]{app:herorthogonalisatie}
     De Gram-Schmidt orthogonalisatie is numeriek instabiel. Dit kan verholpen worden door herorthogonalisatie, hieronder twee varianten waarvan de eerste de meest gebruikte is.
     \begin{enumerate}
-        \item \textbf{Stapsgewijze variant}:    
-            \begin{tcolorbox}[colback=white, colframe=gray, arc=0mm] 
-                \begin{algorithmic}[1]
-                \State $v_j = a_j$
-                \For{$j = 1$ to $j-1$}
-                    \State $r_{ij} = q_i^* v_j$
-                    \State $v_j = v_j - r_{ij} q_i$
-                \EndFor
-                \State
-                \State $w_j = v_j$
-                \For{$i = 1$ to $j -1$}
-                    \State $s_{ij} = q_i^* w_j$
-                    \State $v_j = v_j - s_{ij} q_i$
-                    \State $r_{ij} = r_{ij} + s_{ij}$
-                \EndFor
-                \end{algorithmic}
-            \end{tcolorbox}
+            % \begin{tcolorbox}[colback=white, colframe=gray, arc=0mm] 
+            %     \begin{algorithmic}[1]
+                % \State $v_j = a_j$
+                % \For{$j = 1$ to $j-1$}
+                %     \State $r_{ij} = q_i^* v_j$
+                %     \State $v_j = v_j - r_{ij} q_i$
+                % \EndFor
+                % \State
+                % \State $w_j = v_j$
+                % \For{$i = 1$ to $j -1$}
+                %     \State $s_{ij} = q_i^* w_j$
+                %     \State $v_j = v_j - s_{ij} q_i$
+                %     \State $r_{ij} = r_{ij} + s_{ij}$
+                % \EndFor
+            %     \end{algorithmic}
+            % \end{tcolorbox}
+        \item \textbf{Stapsgewijze variant}: Het klassieke Gram-Schmidt algoritme (Algoritme~\ref{alg:Gram-Schmidt}) wordt lichtelijk aangepast:
+                    \begin{tcolorbox}[colback=white, colframe=gray, arc=0mm] 
+                    \begin{algorithmic}[1]
+                    \For{$j = 1$ to $n$}
+                        \State \textcolor{red}{$v_j = a_j$}
+                        \For{$j = 1$ to $j-1$}
+                            \State \textcolor{red}{$r_{ij} = q_i^* v_j$}
+                            \State \textcolor{red}{$v_j = v_j - r_{ij} q_i$}
+                        \EndFor
+                        \State
+                        \State \textcolor{red}{$w_j = v_j$}
+                        \For{$i = 1$ to $j -1$}
+                            \State \textcolor{red}{$s_{ij} = q_i^* w_j$}
+                            \State \textcolor{red}{$v_j = v_j - s_{ij} q_i$}
+                            \State \textcolor{red}{$r_{ij} = r_{ij} + s_{ij}$}
+                        \EndFor
+                        \State
+                        \State $r_{jj} = \|v_j\|_2$
+                        \State $q_j = v_j / r_{jj}$
+                    \EndFor
+                    \end{algorithmic}
+                \end{tcolorbox}
         \item \textbf{Simultane variant}: Na het berekenen van de onvolledige QR-factorisatie, die resulteert in factoren $\hat{Q}_1$ en $\hat{R}_1$ wordt het algoritme opnieuw toegepast met als input de eerste factor, wat resulteert in $\hat{Q}_1 \approx \hat{Q}_2\hat{R}_2$. We bepalen dan $\hat{Q} = \hat{Q}_2$ en $\hat{R} = \hat{R}_2\hat{R}_1$. Bij het gewijzigde algoritme van Gram-Schmidt (Algoritme~\ref{alg:gewijzigde_Gram-Schmidt}) is dit meestal voldoende om orthogonaliteit van de kolommen van $\hat{Q}$ te garanderen, bij het standaard algoritme (Algoritme~\ref{alg:Gram-Schmidt}) is soms meermaals herhalen van deze procedure noodzakelijk.
     \end{enumerate}
 \end{app}
+
+\newpage
 
 \begin{alg}[QR-facrotisatie met Givens-rotaties]{alg:Givens}
     \vspace{-0.3cm}
@@ -240,6 +265,8 @@
     \end{tcolorbox}
     \vspace{-0.3cm}
 \end{alg}
+
+\newpage
 
 \subsubsection{Beste benadering van een vector in een deelruimte}
 

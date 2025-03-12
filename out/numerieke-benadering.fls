@@ -425,12 +425,6 @@ INPUT Chapters/LineaireBenaderingsproblemen/veeltermen.tex
 INPUT ./Chapters/LineaireBenaderingsproblemen/splines.tex
 INPUT ./Chapters/LineaireBenaderingsproblemen/splines.tex
 INPUT Chapters/LineaireBenaderingsproblemen/splines.tex
-INPUT ./Chapters/LineaireBenaderingsproblemen/meetdata.tex
-INPUT ./Chapters/LineaireBenaderingsproblemen/meetdata.tex
-INPUT Chapters/LineaireBenaderingsproblemen/meetdata.tex
-INPUT ./Chapters/LineaireBenaderingsproblemen/regularisatie.tex
-INPUT ./Chapters/LineaireBenaderingsproblemen/regularisatie.tex
-INPUT Chapters/LineaireBenaderingsproblemen/regularisatie.tex
 INPUT ./Chapters/DataGrafenEigenwaarden/grafen.tex
 INPUT ./Chapters/DataGrafenEigenwaarden/grafen.tex
 INPUT Chapters/DataGrafenEigenwaarden/grafen.tex

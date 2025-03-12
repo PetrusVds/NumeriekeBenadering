@@ -138,103 +138,307 @@
     Deze lineaire samenstelling vormt een basis van de vectorruimte van de splinefuncties van graad $k$ met knooppunten $t_0,\ldots,t_n$ en dus is $M_{i,k+1}(x)$ een splinefunctie. Hetzelfde geldt voor $N_{i,k+1}(x)$.
 \end{prf}
 
-\begin{pro}[B-splines]{pro:B-splines}
-    \begin{enumerate}
-        \item 
-            Voor een gegeven $i$ zijn de B-splines van orde 1 als volgt gedefinieerd:
-            \begin{itemize}
-                \item $M_{i,1}(x) = \begin{cases}
-                    \frac{1}{t_{i+1}-t_i} & \text{als } t_i \leq x < t_{i+1}, \\
-                    0 & \text{anders},
-                \end{cases}$
-                \item $N_{i,1}(x) = \begin{cases}
-                    1 & \text{als } t_i \leq x < t_{i+1}, \\
-                    0 & \text{anders}.
-                \end{cases}$
-            \end{itemize}
-        \item 
-            Voor een gegeven $i$ en $k\geq 1$, geldt voor $x \leq t_i$ of $(x \geq t_{i+k+1})$ dat
-            \begin{equation*}
-            M_{i,k+1}(x) = 0
-            \end{equation*}
-        \item 
-            Voor de gewone en de genormaliseerde B-splines gelden volgende recursiebetrekkingen:
-            \begin{itemize}
-                \item $M_{i,k+1}(x) = \frac{x-t_i}{t_{i+k+1}-t_i} M_{i,k}(x) + \frac{t_{i+k+1}-x}{t_{i+k+1}-t_{i}} M_{i+1,k}(x)$,
-                \item $N_{i,k+1}(x) = \frac{x-t_i}{t_{i+k}-t_i} N_{i,k}(x) + \frac{t_{i+k+1}-x}{t_{i+k+1}-t_{i+1}} N_{i+1,k}(x)$.
-            \end{itemize}
-        \item 
-            Voor een gegeven $k\geq 1$ en $x \in (t_i,t_{i+k+1})$ geldt dat
-            \begin{equation*}
-                M_{i,k+1}(x) > 0
-            \end{equation*}
-    \end{enumerate}
+\begin{pro}[B-spline - Eerste orde]{pro:B-splines-1}
+    \begin{equation*}
+        M_{i,1}(x) = \begin{cases}
+            \frac{1}{t_{i+1}-t_i} & \text{als } t_i \leq x < t_{i+1}, \\
+            0 & \text{anders},
+        \end{cases}, \quad 
+        N_{i,1}(x) = \begin{cases}
+            1 & \text{als } t_i \leq x < t_{i+1}, \\
+            0 & \text{anders}.
+        \end{cases}
+    \end{equation*}
+    % Voor een gegeven $i$ zijn de B-splines van orde 1 als volgt gedefinieerd:
+    % \begin{itemize}
+    %     \item $M_{i,1}(x) = \begin{cases}
+    %         \frac{1}{t_{i+1}-t_i} & \text{als } t_i \leq x < t_{i+1}, \\
+    %         0 & \text{anders},
+    %     \end{cases}$
+    %     \item $N_{i,1}(x) = \begin{cases}
+    %         1 & \text{als } t_i \leq x < t_{i+1}, \\
+    %         0 & \text{anders}.
+    %     \end{cases}$
+    % \end{itemize}
 \end{pro}
 
-\begin{prf}[B-splines]{prf:B-splines}
-    \begin{enumerate}
-        \item
-            Per definitie van $M_{i,k+1}(x)$ geldt dat
-            \begin{align*}
-                M_{i,1}(x) 
-                    &= \Delta_t^1(t_i,t_{i+1}) (t-x)^0_+ \\
-                    &= \frac{1}{t_{i+1}-t_i} (t-x)_+ \\
-                    &= \frac{(t_{i+1} - x)^0_+ - (t_i - x)^0_+}{t_{i+1}-t_i}.
-            \end{align*} 
-            Het bovenste deel van de breuk is gelijk aan 1 als $t_i \leq x < t_{i+1}$ en 0 anders, hierdoor volgt dus:
-            \begin{equation*}
-                M_{i,1}(x) = \begin{cases}
-                    \frac{1}{t_{i+1}-t_i} & \text{als } t_i \leq x < t_{i+1}, \\
-                    0 & \text{anders}.
-                \end{cases}
-            \end{equation*}
-            Hieruit volgt ook $N_{i,1}(x)$, sinds dit neer komt op vermenigvuldigen met $(t_{i+1} - t_i)$.
-        \item 
-            We leidden vroeger reeds af dat 
-            \begin{equation*}
-                M_{i,k+1}(x) = \sum_{s=i}^{i+k+1} \lambda_s f_s \quad \text{met} \quad f_s = (t_s - x)^k_+.
-            \end{equation*}
-            Wanneer nu $x \geq t_{i+k+1}$, dan zijn alle $f_s$ in bovenstaande formule nul. Als $x \leq t_i$, dan mogen we in de uitdrukking voor $f_s$ het vervangen door equivalente $(t-x)^k$ en dit voor elke $s$. De gewone B-spline wordt dan:
-            \begin{equation*}
-                M_{i,k+1}(x) = \Delta_t^{k+1} (t_i,\ldots,t_{i+k+1}) (t-x)^k.
-            \end{equation*}
-            Dat is identiek nul, want differentie van orde $k+1$ avn een veelterm van graad $k$ is nul.
-        \item 
-            Voor $k \geq 1$ kunnen we schrijven dat:
-            \begin{equation*}
-                (t-x)^k_+ = (t-x)^{k-1}_+ (t-x).
-            \end{equation*}
-            We vullen dit in in de definitie van $M_{i,k+1}(x)$ en passen de formule van Leibniz voor gedeelde differentie  (zie Eigenschap~\ref{pro:Gedeelde_differentie}) toe, namelijk:
-            \begin{equation*}
-                f(x) = g(x)h(x) \ \Rightarrow \ f[x_i,\ldots,x_j] = \sum_{k=i}^{j} g[x_i,\ldots,x_k]h[x_k,\ldots,x_j].
-            \end{equation*}
-            Omwille van de factor $(t-x)$, een veelterm van graad 1 in $t$, bevatten de meeste termen in de bovenstaande som een factor die gelijk is aan nul. We vinden:
-            \begin{align*}
-                M_{i_k+1}(x) 
-                    &= \Delta_t^{k+1}(t_i,\ldots,t_{i+k+1}) (t-x)^k_+ \\
-                    &= \Delta_t^{k+1}(t_i,\ldots,t_{i+k+1}) \{(t-x)^{k-1}_+ (t-x)\} \\
-                    &= \Delta_t^{k+1}(t_i,\ldots,t_{i+k+1}) (t-x)^{k-1}_+ \cdot \Delta^0_t(t_{i+k+1})(t-x) + \\ 
-                    &   \quad \quad \Delta_t^{k}(t_i,\ldots,t_{i+k})(t-x)^{k-1}_+ \cdot \Delta^1_t(t_{i+k},t_{i+k+1})(t-x) \\
-                    &= \Delta_t^{k+1}(t_i,\ldots,t_{i+k+1}) (t-x)^{k-1}_+(t_{i+k+1}-x) + M_{i,k}(x) 
-            \end{align*}
-            Men gebruikt nu de recursieve definitie van gedeelde differentie, om de differentie van orde $k+1$ in bovenstaande uitdrukking te schrijven als een lineaire combinatie van twee gedeelde differenties van orde $k$. Rekening houdend met de definitie van B-spline, verkrijgt men:
-            \begin{equation*}
-                M_{i,k+1}(x) =  \frac{M_{i+1,k}(x) - M_{i,k}(x)}{t_{i+k+1}-t_i}(t_{i+k+1}-x) + M_{i,k}(x).
-            \end{equation*}
-            Hieruit volgt de recursiebetrekking voor $M_{i,k+1}(x)$. De recursiebetrekking voor $N_{i,k+1}(x)$ volgt op analoge wijze.
-        \item 
-            We geven een bewijs gebaseerd op de recursiebetrekking en maken gebruik van volledige inductie. \\ 
-            
-            Voor $k=1$ luidt de recursiebetrekking
-            \begin{equation*}
-                M_{i,2}(x) = \frac{x-t_i}{t_{i+2}-t_i} M_{i,1}(x) + \frac{t_{i+2}-x}{t_{i+2}-t_{i+1}} M_{i+1,1}(x).
-            \end{equation*}
-            Schrijven we het rechterlid als $AB + CD$, dan is $A >0$ voor $x \in (t_i,\infty)$, $B>0$ voor $x\in [t_i,t_{i+1})$ en nul daarbuiten, $C>0$ voor $x \in (-\infty,t_{i_2})$, $D>0$ voor $x\in [t_{i_1},t_{i+2})$ en nul daarbuiten. Uit dit alles volgt dat $M_{i,2}(x) >0$ als $x \in (t_i,t_{i+2})$.  \\
+\begin{prf}[B-spline - Eerste orde]{prf:B-splines-1}
+    Per definitie van $M_{i,k+1}(x)$ geldt dat
+    \begin{align*}
+        M_{i,1}(x) 
+            &= \Delta_t^1(t_i,t_{i+1}) (t-x)^0_+ \\
+            &= \frac{1}{t_{i+1}-t_i} (t-x)_+ \\
+            &= \frac{(t_{i+1} - x)^0_+ - (t_i - x)^0_+}{t_{i+1}-t_i}.
+    \end{align*} 
+    Het bovenste deel van de breuk is gelijk aan 1 als $t_i \leq x < t_{i+1}$ en 0 anders, hierdoor volgt dus:
+    \begin{equation*}
+        M_{i,1}(x) = \begin{cases}
+            \frac{1}{t_{i+1}-t_i} & \text{als } t_i \leq x < t_{i+1}, \\
+            0 & \text{anders}.
+        \end{cases}
+    \end{equation*}
+    Hieruit volgt ook $N_{i,1}(x)$, sinds dit neer komt op vermenigvuldigen met $(t_{i+1} - t_i)$. \\
 
-            Voor de inductie stap bekijken we de recursiebetrekking $M_i^{k+1}$,
-            \begin{equation*}
-                M_{i,k+1}(x) = \frac{x-t_i}{t_{i+k+1}-t_i} M_{i,k}(x) + \frac{t_{i+k+1}-x}{t_{i+k+1}-t_{i}} M_{i+1,k}(x).
-            \end{equation*}
-            Schrijven we ook hier het rechterlid als $AB + CD$, dan is $A >0$ voor $x \in (t_i,\infty)$, $B>0$ als $x\in [t_i,t_{i+k})$ en nul daarbuiten, $C>0$ voor $x \in (-\infty,t_{i+k+1})$, $D>0$ als $x\in [t_{i+k},t_{i+k+1})$ en nul daarbuiten.  Er volgt dat $M_{i,k+1}(x) >0$ als $x \in (t_i,t_{i+k+1})$.
-    \end{enumerate}
+    \textbf{Opmerking:}  Dit bewijs dient niet gekend te zijn, enkel grafisch inzien.
+\end{prf}
+
+\begin{pro}[B-spline]{pro:B-splines-2}
+    % Voor een gegeven $i$ en $k\geq 1$, geldt voor $x \leq t_i$ of $x \geq t_{i+k+1}$ dat
+    \begin{equation*}
+    k\geq 1,\ x \in \Omega:\ M_{i,k+1}(x) = 0 \quad \text{met} \quad \Omega = (-\infty, t_i] \cap [t_{i+k+1}, \infty)
+    \end{equation*}
+    \vspace{-.2cm}
+\end{pro}
+
+\begin{prf}[B-spline]{prf:B-splines-2}
+    We leidden vroeger reeds af dat 
+    \begin{equation*}
+        M_{i,k+1}(x) = \sum_{s=i}^{i+k+1} \lambda_s f_s \quad \text{met} \quad f_s = (t_s - x)^k_+.
+    \end{equation*}
+    Wanneer nu $x \geq t_{i+k+1}$, dan zijn alle $f_s$ in bovenstaande formule nul. Als $x \leq t_i$, dan mogen we in de uitdrukking voor $f_s$ het vervangen door equivalente $(t-x)^k$ en dit voor elke $s$. De gewone B-spline wordt dan:
+    \begin{equation*}
+        M_{i,k+1}(x) = \Delta_t^{k+1} (t_i,\ldots,t_{i+k+1}) (t-x)^k.
+    \end{equation*}
+    Dat is identiek nul, want differentie van orde $k+1$ avn een veelterm van graad $k$ is nul. \\
+
+    \textbf{Opmerking:}  Dit bewijs dient niet gekend te zijn, enkel grafisch inzien.
+\end{prf}
+
+\begin{pro}[B-spline - Recursiebetrekkingen]{pro:B-splines-3}
+    \begin{itemize}
+        \item $M_{i,k+1}(x) = \frac{x-t_i}{t_{i+k+1}-t_i} M_{i,k}(x) + \frac{t_{i+k+1}-x}{t_{i+k+1}-t_{i}} M_{i+1,k}(x)$,
+        \item $N_{i,k+1}(x) = \frac{x-t_i}{t_{i+k}-t_i} N_{i,k}(x) + \frac{t_{i+k+1}-x}{t_{i+k+1}-t_{i+1}} N_{i+1,k}(x)$.
+    \end{itemize}
+\end{pro}
+
+\begin{prf}[B-spline - Recursiebetrekkingen]{prf:B-splines-3}
+    Voor $k \geq 1$ kunnen we schrijven dat:
+    \begin{equation*}
+        (t-x)^k_+ = (t-x)^{k-1}_+ (t-x).
+    \end{equation*}
+    We vullen dit in in de definitie van $M_{i,k+1}(x)$ en passen de formule van Leibniz voor gedeelde differentie  (zie Eigenschap~\ref{pro:Gedeelde_differentie}) toe, namelijk:
+    \begin{equation*}
+        f(x) = g(x)h(x) \ \Rightarrow \ f[x_i,\ldots,x_j] = \sum_{k=i}^{j} g[x_i,\ldots,x_k]h[x_k,\ldots,x_j].
+    \end{equation*}
+    Omwille van de factor $(t-x)$, een veelterm van graad 1 in $t$, bevatten de meeste termen in de bovenstaande som een factor die gelijk is aan nul. We vinden:
+    \begin{align*}
+        M_{i_k+1}(x) 
+            &= \Delta_t^{k+1}(t_i,\ldots,t_{i+k+1}) (t-x)^k_+ \\
+            &= \Delta_t^{k+1}(t_i,\ldots,t_{i+k+1}) \{(t-x)^{k-1}_+ (t-x)\} \\
+            &= \Delta_t^{k+1}(t_i,\ldots,t_{i+k+1}) (t-x)^{k-1}_+ \cdot \Delta^0_t(t_{i+k+1})(t-x) + \\ 
+            &   \quad \quad \Delta_t^{k}(t_i,\ldots,t_{i+k})(t-x)^{k-1}_+ \cdot \Delta^1_t(t_{i+k},t_{i+k+1})(t-x) \\
+            &= \Delta_t^{k+1}(t_i,\ldots,t_{i+k+1}) (t-x)^{k-1}_+(t_{i+k+1}-x) + M_{i,k}(x) 
+    \end{align*}
+    Men gebruikt nu de recursieve definitie van gedeelde differentie, om de differentie van orde $k+1$ in bovenstaande uitdrukking te schrijven als een lineaire combinatie van twee gedeelde differenties van orde $k$. Rekening houdend met de definitie van B-spline, verkrijgt men:
+    \begin{equation*}
+        M_{i,k+1}(x) =  \frac{M_{i+1,k}(x) - M_{i,k}(x)}{t_{i+k+1}-t_i}(t_{i+k+1}-x) + M_{i,k}(x).
+    \end{equation*}
+    Hieruit volgt de recursiebetrekking voor $M_{i,k+1}(x)$. De recursiebetrekking voor $N_{i,k+1}(x)$ volgt op analoge wijze. \\
+
+    \textbf{Opmerking:}  Dit bewijs dient niet gekend te zijn, enkel grafisch inzien.
+\end{prf}
+
+\begin{pro}[B-spline]{pro:B-splines-4}
+    \begin{equation*}
+        k\geq 1,\ x \in (t_i,t_{i+k+1}): \ M_{i,k+1}(x) > 0
+    \end{equation*}
+    \vspace{-0.2cm}
+\end{pro}
+
+\begin{prf}[B-spline]{prf:B-splines-4}
+    We geven een bewijs gebaseerd op de recursiebetrekking en maken gebruik van volledige inductie. \\ 
+            
+    Voor $k=1$ luidt de recursiebetrekking
+    \begin{equation*}
+        M_{i,2}(x) = \frac{x-t_i}{t_{i+2}-t_i} M_{i,1}(x) + \frac{t_{i+2}-x}{t_{i+2}-t_{i+1}} M_{i+1,1}(x).
+    \end{equation*}
+    Schrijven we het rechterlid als $AB + CD$, dan is $A >0$ voor $x \in (t_i,\infty)$, $B>0$ voor $x\in [t_i,t_{i+1})$ en nul daarbuiten, $C>0$ voor $x \in (-\infty,t_{i_2})$, $D>0$ voor $x\in [t_{i_1},t_{i+2})$ en nul daarbuiten. Uit dit alles volgt dat $M_{i,2}(x) >0$ als $x \in (t_i,t_{i+2})$.  \\
+
+    Voor de inductie stap bekijken we de recursiebetrekking $M_i^{k+1}$,
+    \begin{equation*}
+        M_{i,k+1}(x) = \frac{x-t_i}{t_{i+k+1}-t_i} M_{i,k}(x) + \frac{t_{i+k+1}-x}{t_{i+k+1}-t_{i}} M_{i+1,k}(x).
+    \end{equation*}
+    Schrijven we ook hier het rechterlid als $AB + CD$, dan is $A >0$ voor $x \in (t_i,\infty)$, $B>0$ als $x\in [t_i,t_{i+k})$ en nul daarbuiten, $C>0$ voor $x \in (-\infty,t_{i+k+1})$, $D>0$ als $x\in [t_{i+k},t_{i+k+1})$ en nul daarbuiten.  Er volgt dat $M_{i,k+1}(x) >0$ als $x \in (t_i,t_{i+k+1})$. \\
+
+    \textbf{Opmerking:}  Dit bewijs dient niet gekend te zijn, enkel grafisch inzien.
+\end{prf}
+
+\begin{pro}[B-spline]{pro:B-splines-5}
+    \begin{equation*}
+        k \geq 1,\ \forall j \in [0,k-1]:\ M^{(j)}_{i,k+1}(t_i) =  M^{(j)}_{i,k+1}(t_{i+k+1}) = 0 
+    \end{equation*}
+    \vspace{-0.2cm}
+\end{pro}
+
+\begin{prf}[B-spline]{prf:B-splines-5}
+    Sinds we bewezen hebben dat een B-spline een geldige splinefunctie is (zie Bewijs~\ref{prf:Geldigheid_van_B-splines}), volgt het te bewijzen uit de tweede eigenschap van splinefuncties in tandem met Eigenschap~\ref{pro:B-splines-2}. \\
+
+    \textbf{Opmerking:}  Dit bewijs dient niet gekend te zijn, enkel grafisch inzien.
+\end{prf}
+
+\begin{pro}[B-spline]{pro:B-splines-6}
+    \begin{equation*}
+        k \geq 1,\ x \in [t_0,t_n]:\ \sum_{i=-k}^{n-1} N_{i, k+1}(x) = 1
+    \end{equation*}
+    \vspace{-0.2cm}
+\end{pro}
+
+\begin{prf}[B-spline]{prf:B-splines-6}
+    We gebruiken de recursiebetrekking en Eigenschap~\ref{prf:B-splines-2} om aan te tonen dat $x \in [t_j,t_{j+1})$ geldt:
+    \begin{align*}
+        \sum_{i=-k}^{n-1} N_{i, k+1}(x) 
+            &= \sum_{i=j-k}^{j} N_{i, k+1}(x) \\
+            &= \sum_{i=j-k}^{j} \left\{
+                \frac{x-t_i}{t_{i+k} - t_i} N_{i,k}(x) + \frac{t_{i+k+1}-x}{t_{i+k+1}-t_{i+1}} N_{i+1,k}(x)
+            \right\} \\
+            &= \frac{x - t_{j-k}}{t_j - t_{j-k}} N_{j-k,k}(x) 
+            % \\    &\quad \quad \quad \quad \quad 
+                + \sum_{i=j-(k-1)}^j \left\{
+                \frac{x-t_i}{t_{i+k} - t_i} + \frac{t_{i+k}-x}{t_{i+k}-t_{i}}
+                    \right\} N_{i,k}(x) \\
+                &\quad \quad \quad \quad \quad + \frac{t_{j+k+1}-x}{t_{j+k+1}-t_{j+1}} N_{j+1,k}(x) 
+    \end{align*}
+    Uit Eigenschap~\ref{prf:B-splines-2} volgt dat $N_{j-k,k}(x)$ en $N_{j+1,k}(x)$ identiek nul zijn voor $x \in [t_j,t_{j+1}]$. Dus:
+    \begin{equation*}
+        \sum_{i=j-k}^{j} N_{i,k+1}(x) = \sum_{i=j-(k-1)}^j N_{i,k}(x).
+    \end{equation*} 
+    We kunnen op analoge manier verder gaan. We vinden 
+    \begin{equation*}
+        \sum_{i=j-k}^j N_{i,k+1}(x) = \ldots = \sum_{i=j-1}^{j} N_{i,2}(x) = N_{j,1}(x).
+    \end{equation*}
+    Voor $x\in[t_j,t_{j+1})$ is het rechterlid gelijk aan 1. Dat bewijst de stelling voor alle $x\in[t_0,t_n)$. Het geval $x = t_n$ volgt uit de continuïteit van de functie
+    \begin{equation*}
+        k \geq 1:\ \sum_{i=-k}^{n-1} N_{i, k+1}(x).
+    \end{equation*}
+
+    \textbf{Opmerking:}  Dit bewijs dient niet gekend te zijn, enkel grafisch inzien.
+\end{prf}
+
+\begin{pro}[B-spline]{pro:B-splines-7}
+    % De (rechter)afgeleide van $N_{i,k+1}(x)$ wordt gegeven door:
+    \begin{equation*}
+        k \geq 1:\ N'_{i,k+1}(x) = k\left(
+            \frac{N_{i,k}(x)}{t_{i+k}-t_i} 
+                - \frac{N_{i+1,k}(x)}{t_{i+k+1}-t_{i+1}}
+        \right)
+    \end{equation*}
+    \vspace{-0.2cm}
+\end{pro}
+
+\begin{prf}[B-spline]{pro:B-splines-7}
+    In het aanstaande bewijs zal gebruik gemaakt worden van volgende ongeziene eigenschap van de afgeknotte machtsfunctie:
+    % \begin{pro}[Afgeknotte machtsfunctie]{pro:Afgeknotte_machtsfunctie}
+        \begin{equation*}
+            \frac{d}{dx} (t-x)^k_+ = -k(t-x)^{k-1}_+.
+        \end{equation*}
+    %     \vspace{-0.2cm}
+    % \end{pro}
+    Deze formule is steeds geldig, uitgezonderd voor het berekenen van de afgeleide in het punt $x=t$ voor $k=1$. In dat geval geeft de formule de waarde van de rechterafgeleide. \\
+
+    We bewijzen nu het gestelde:
+    \begin{align*}
+        N'_{i,k+1}(x) 
+            &= \frac{d}{dx}\left\{
+                    (t_{i+k+1}-t_i) \Delta_t^{k+1}(t_i,\ldots,t_{i+k+1}) (t-x)^k_+
+                \right\} \\
+            &= (t_{i+k+1}-t_i) \Delta_t^{k+1}(t_i,\ldots,t_{i+k+1}) \frac{d}{dx} (t-x)^k_+ \\
+            &= -k(t_{i+k+1}-t_i) \Delta_t^{k+1}(t_i,\ldots,t_{i+k+1}) (t-x)^{k-1}_+ \\
+            &= -k\left(
+                \Delta_t^k(t_{i+1},\ldots,t_{i+k+1})(t-x)_+^{k-1}
+                - \Delta_t^k(t_i,\ldots,t_{i+k})(t-x)_+^{k-1}
+            \right) \\
+            &= k\left(
+                \frac{N_{i,k}(x)}{t_{i+k}-t_i} 
+                - \frac{N_{i+1,k}(x)}{t_{i+k+1}-t_{i+1}}
+            \right).
+    \end{align*}
+    \textbf{Opmerking:}  Dit bewijs dient niet gekend te zijn, enkel grafisch inzien.
+\end{prf}
+
+\begin{pro}[Splinefunctie - B-splinevoorstelling]{pro:B-splinevoorstelling}
+    De splinefunctie $s(x)$ kan worden voorgesteld als een lineaire combinatie van $n+k$ B-splines,
+    \begin{equation*}
+        s(x) = \sum_{i=-k}^{n-1} c_i N_{i,k+1}(x).
+    \end{equation*}
+    \vspace{-0.3cm}
+\end{pro}
+
+\begin{lem}[de Boor]{lem:de_Boor}
+    Zij $x\in[t_j,t_{j+1})$. Dan geldt $s(x) = c_j^{[k]}$. De constante $c_i^{[0]} = c_i$ en $c_i^{[r]}$ wordt gevonden uit 
+    \begin{equation*}
+        c_i^{[r]} = \alpha_{i,r} c_i^{[r-1]} + (1-\alpha_{i,r})c_{i-1}^{[r-1]} \quad \text{met} \quad \alpha_{i,r} = \frac{x-t_i}{t_{i+k+1-r}-t_i}.
+    \end{equation*}
+    \vspace{-0.2cm}
+\end{lem}
+
+\begin{prf}[de Boor]{prf:de_Boor}
+    We schrijven $s(x)$ als een lineaire combinatie van B-splines van orde $k+1$, waarna we Eigenschap~\ref{pro:B-splines-3} hanteren en vereenvoudigen:
+    \begin{align*}
+        s(x) 
+            &= \sum_{i=-k}^{n-1}c_i N_{i,k+1}(x) \\
+            &= \sum_{i=-k}^{n-1}c_i
+                \left(
+                    \frac{x-t_i}{t_{i+k}-t_i} N_{i,k}(x) 
+                    + \frac{t_{i+k+1} - x}{t_{i+k+1} - t_{i+1}} N_{i+1,k}(x)
+                \right) \\
+            &= \sum_{i=-(k-1)}^{n-1} c_i \frac{x-t_i}{t_{i+k} - t_i} N_{i,k}(x) 
+                + \sum_{i=-k}^{n-2} c_i \frac{t_{i+k+1} - x}{t_{i+k+1} - t_{i+1}} N_{i+1,k}(x) \\
+            &= \sum_{i=-(k-1)}^{n-1} 
+                \left(
+                    c_i \frac{x-t_i}{t_{i+k} - t_i} + c_{o-1} \frac{t_{i+k} - x}{t_{i+k} - t_i}
+                \right)
+                N_{i,k}(x) \\
+            &= \sum_{i=-(k-1)}^{n-1} c_i^{[1]} N_{i,k}(x).
+    \end{align*}
+    Schrijven we $c_i^{[0]} = c_i$, dan vinden we de $c_i^{[1]}$-coëfficiënten als
+    \begin{equation*}
+        c_i^{[1]} = \alpha_{i,1} c_i^{[0]} + (1-\alpha_{i,1})c_{i-1}^{[0]} \quad \text{met} \quad \alpha_{i,1} = \frac{x-t_i}{t_{i+k}-t_i}. 
+    \end{equation*} 
+    Op een analoge manier kunnen we verder gaan en vinden dat 
+    \begin{equation*}
+        s(x) = \sum_{i=-(k-r)}^{n-1} c_i^{[r]}N_{i,k+1 - r}(x) = \ldots = \sum_{i=o}^{n-1} c_i^{[k]}N_{i,1}(x).
+    \end{equation*}
+    waarbij $c_i^{[r]}$ gegeven wordt door de recursiebetrekking van het gestelde. Voor $x\in[t_j,t_{j+1})$ zijn alle B-splines van eerste orde gelijk aan nul, op $N_{j,1}(x)$ na. Die neemt er de waarde $1$ aan. We vinden dus:
+    \begin{equation*}
+        s(x) = c_j^{[k]}.
+    \end{equation*}
+    \vspace{-0.8cm}
+\end{prf}
+
+\begin{lem}[Differentiëren van een splinefunctie]{lem:diff_spline}
+    De afgeleide van orde $r$ van een splinefunctie $s(x)$ voldoet aan
+    \begin{equation*}
+        s^{(r)}(x) = \sum_{i=-(k-r)}^{n-1}c_i^{(r)}N_{i,k+1-r}(x)
+    \end{equation*}
+    met $c_i^{(0)} = c_i$ en $c_i^{(r)} = (k+1-r)\frac{c_i^{(r-1)} - c_{i-1}^{(r-1)}}{t_{i+k+1-r}-t_i}$. Indien $r=k$, dan geeft bovenstaande formule de rechterafgeleide.
+\end{lem}
+
+\begin{prf}[Differentiëren van een splinefunctie]{prf:diff_spline}
+    We bewijzen per inductie, beginnende bij het basisgeval $r=1$. 
+    \begin{align*}
+        s'(x) 
+            &= \sum_{i=-k}^{n-1}c_i^{(0)}N'_{i,k+1}(x) \\
+            &= \sum_{i=-k}^{n-1}c_i^{(0)}k
+                \left(
+                    \frac{N_{i,k}(x)}{t_{i+k}-t_i} - \frac{N_{i+1,k}(x)}{t_{i+k+1}-t_{i+1}}
+                \right) \\
+            &= \sum_{i=-(k-1)}^{n-1}c_i^{(1)}N_{i,k}(x) \quad \text{met} \quad c_i^{(1)} = k \frac{c_i^{(0)} - c_{i-1}^{(0)}}{t_{i+k} - t_i}
+    \end{align*}
+    \textcolor{brown}{
+        Stel nu dat het geldt voor $r - 1$, namelijk:
+        \begin{equation*}
+            s^{(r-1)}(x) = \sum_{i=-(k+1-(r-1))}^{n-1}c_i^{(r-1)}N_{i,k+1-(r-1)}(x)
+        \end{equation*} 
+        Door deze expressie af te leiden, kunnen we aantonen dat het ook geldt voor $r$ wegens inductie:
+        \begin{align*}
+            s^{(r)}(x)
+                &= \sum_{i=-(k+1-(r-1))}^{n-1}c_i^{(r-1)}N'_{i,k+1-(r-1)}(x) \\
+                &= \sum_{i=-(k+1-r)}^{n-1}c_i^{(r-1)}(k+1-r)
+                \left(
+                    \frac{N_{i,k+1-r}(x)}{t_{i+k+1-r}-t_i} - \frac{N_{i+1,k+1-r}(x)}{t_{i+k+1-(r-1)}-t_{i+1}}
+                \right) \\
+                &= \sum_{i=-(k+1-r)}^{n-1}c_i^{(r)}
+                N_{i,k+1-r}(x) \quad \text{met} \quad c_i^{(r)} =(k+1-r) \frac{c_i^{(r-1)} - c_{i-1}^{(r-1)}}{t_{i+k+1-r} - t_i}
+        \end{align*}
+    }
 \end{prf}
