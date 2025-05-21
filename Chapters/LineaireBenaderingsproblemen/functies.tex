@@ -3,7 +3,7 @@
 \vspace{0.5cm}
 
 \begin{theo}[Afstand]{theo:afstand}
-    Men zegt dat over een verzameling $A$ een afstand gedefinieerd is als er met elk paar elementen $x,y \in A$ een reëel getal $\rho(x,y)$ overeenstemt dat voldoet aan de volgende eigenschappen:
+    Men zegt dat over een verzameling $A$ een \emph{afstand} gedefinieerd is als er met elk paar elementen $x,y \in A$ een reëel getal $\rho(x,y)$ overeenstemt dat voldoet aan de volgende eigenschappen:
     \begin{itemize}
         \item Positief definitief: \ $\rho(x,y) \geq 0$ en $\rho(x,y) = 0 \ \Leftrightarrow \ x = y$
         \item Symmetrisch: \ $\rho(x,y) = \rho(y,x)$
@@ -13,7 +13,7 @@
 \end{theo}
 
 \begin{theo}[Metrische ruimte]{theo:metrische_ruimte}
-    De verzameling $A$ met een afstandsfunctie $\rho$ noemt men een \textbf{metrische ruimte} ($A,\rho$). De afstandsfunctie noemt men ook wel de \textbf{metriek} van de ruimte. De afstand tot een deelverzameling $D$ van een metrische ruimte wordt gedefinieerd als:
+    De verzameling $A$ met een afstandsfunctie $\rho$ noemt men een \emph{metrische ruimte} ($A,\rho$). De afstandsfunctie noemt men ook wel de \emph{metriek} van de ruimte. De afstand tot een deelverzameling $D$ van een metrische ruimte wordt gedefinieerd als:
     \begin{equation*}
         \rho(x,D) = \inf\left\{\rho(x,y) \ | \ y \in D\right\}
     \end{equation*}
@@ -29,7 +29,7 @@
 \vspace{0.5cm}
 
 \begin{theo}[Vectorruimte]{Vectorruimte}
-    Een vectorruimte $V$ over het veld $\mathbb{F}$ is een verzameling van elementen waarop twee bewerkingen zijn gedefinieerd: optelling en een scalaire vermenigvuldiging met een element uit $\mathbb{F}$. Deze bewerkingen moeten voldoen aan volgende voorwaarden:
+    Een \emph{vectorruimte} $V$ over het veld $\mathbb{F}$ is een verzameling van elementen waarop twee bewerkingen zijn gedefinieerd: optelling en een scalaire vermenigvuldiging met een element uit $\mathbb{F}$. Deze bewerkingen moeten voldoen aan volgende voorwaarden:
     \begin{enumerate}
         \item $\forall \vec{u},\vec{v} \in V: \ \vec{u} + \vec{v} \in V$
         \item $\forall \vec{u},\vec{v},\vec{w} \in V: \ \vec{u} + (\vec{v} + \vec{w}) = (\vec{u} + \vec{v}) + \vec{w}$
@@ -45,13 +45,13 @@
 \end{theo}
 
 \begin{theo}[Norm en genormeerde ruimte]{theo:norm_ruimte}
-    Een \textbf{norm} over de vectorruimte $V$ is een functionaal van $V$ naar $\mathbb{R}$ waarvan de beelden voldoen aan de volgende eigenschappen:
+    Een \emph{norm} over de vectorruimte $V$ is een functionaal van $V$ naar $\mathbb{R}$ waarvan de beelden voldoen aan de volgende eigenschappen:
     \begin{itemize}
         \item Positief definiet: \ $\|\vec{x}\| \geq 0$ en $\|\vec{x}\| = 0 \ \Leftrightarrow \ \vec{x} = \vec{0}$
         \item Homogeniteit:\ $\|a\vec{x}\| = |a|\|\vec{x}\|$
         \item Driehoeksongelijkheid:\ $\|\vec{x} + \vec{y}\| \leq \|\vec{x}\| + \|\vec{y}\|$
     \end{itemize}
-    Een vectorruimte waarover een norm gedefinieerd is, is een \textbf{genormeerde ruimte}.
+    Een vectorruimte waarover een norm gedefinieerd is, is een \emph{genormeerde ruimte}.
 \end{theo}
 
 \begin{lem}[Metriciteit van de vectorruimte]{lem:metriciteit_vectorruimte}
@@ -122,18 +122,18 @@
 \begin{prf}[Beste benadering in een deelruimte]{prf:beste_benadering_deelruimte}
     \begin{itemize}
         \item 
-            \textbf{Existentie}: Noem $d = \inf\{\|\vec{v}-\vec{w}\| | \vec{w} \in \mathcal{D}\}$. We tonen aan dat dit infimum in feite een minimum is. Volgens de definitie van een infimum bestaat er een rij van vectoren $\{\vec{w}_k\}_{k>1}$ in $\mathcal{D}$ zodat $\{\|\vec{v}-\vec{w}\|\}_{k>1}$ een dalende rij is die convergeert naar $d$. De rij $\{\vec{w}_k\}_{k>1}$ is bovendien uniform begrensd omdat 
+            \textbf{Existentie}: Noem $d = \inf\{\|\vec{v}-\vec{w}\| \ | \ \vec{w} \in \mathcal{D}\}$. We tonen aan dat dit infimum in feite een minimum is. Volgens de definitie van een infimum bestaat er een rij van vectoren $\{\vec{w}_k\}_{k>1}$ in $\mathcal{D}$ zodat $\{\|\vec{v}-\vec{w}\|\}_{k>1}$ een dalende rij is die convergeert naar $d$. De rij $\{\vec{w}_k\}_{k>1}$ is bovendien uniform begrensd omdat 
             \begin{equation}
                 \forall k > 1: \ \|\vec{w}_k\| = \|(\vec{w}_k - \vec{v}) + \vec{v}\| \leq \|\vec{w}_k - \vec{v}\| + \|\vec{v}\| \leq \|\vec{w}_1 - \vec{v}\| + \|\vec{v}\|
                 \label{eq:uniform_begrensd}
             \end{equation}
-            Stel $n$ gelijk aan de dimensie van $\mathcal{D}$ en beschouw $\{\vec{a}_1,\ldots,\vec{a}_n\}$ van $\mathcal{D}$. Dan kunnen we $\vec{w}_k$ met $k > 1$ ontbinden als:
+            Stel $n$ gelijk aan de dimensie van $\mathcal{D}$ en beschouw een basis $\{\vec{a}_1,\ldots,\vec{a}_n\}$ van $\mathcal{D}$. Dan kunnen we $\vec{w}_k$ ontbinden als:
             \begin{equation*}
-                \vec{w}_k = \sum_{i=1}^n \alpha_{ki}\vec{a}_i 
+                \forall k > 1: \ \vec{w}_k = \sum_{i=1}^n \alpha_{ki}\vec{a}_i 
             \end{equation*}
-            Uit (\ref{eq:uniform_begrensd}) volgt dat de rij $\{\alpha_{k1},\ldots,\alpha_{kn}\}_{k>1}$ uniform begrensd is. Deze rij heeft bijgevolg steeds een convergente deelrij (\textbf{stelling van Weierstrass-Bolzano}) waarvan we de limiet $(\hat{\alpha}_1,\ldots,\hat{\alpha}_n)$ noemen. Daarom kunnen we, zonder algemeenheid in te boeten, in wat volgt veronderstellen dat de rij $\{\alpha_{k1},\ldots,\alpha_{kn}\}_{k>1}$ convergeert naar $(\hat{\alpha}_1,\ldots,\hat{\alpha}_n)$. Stel nu dat
+            Uit (\ref{eq:uniform_begrensd}) volgt dat de rij $\{\alpha_{k1},\ldots,\alpha_{kn}\}_{k>1}$ uniform begrensd is. Deze rij heeft bijgevolg steeds een convergente deelrij (\emph{stelling van Weierstrass-Bolzano}) waarvan we de limiet $(\hat{\alpha}_1,\ldots,\hat{\alpha}_n)$ noemen. Daarom kunnen we, zonder algemeenheid in te boeten, in wat volgt veronderstellen dat de rij $\{\alpha_{k1},\ldots,\alpha_{kn}\}_{k>1}$ convergeert naar $(\hat{\alpha}_1,\ldots,\hat{\alpha}_n)$. Stel nu dat
             \begin{equation*}
-                \vec{\zeta} = \sum_{i=1}^{n} \hat{\alpha}_i \vec{a}_i
+                \vec{\zeta} = \sum_{i=1}^{n} \hat{\alpha}_i \vec{a}_i,
             \end{equation*} 
             dan geldt er voor alle $k\geq1$ dat 
             \begin{equation*}
@@ -150,7 +150,7 @@
             \begin{equation*}
                 \left\| \vec{v} - \frac{\vec{\zeta}_1 + \vec{\zeta}_2}{2} \right\| = d \left\| \underbrace{\frac{1}{2}}_\lambda\vec{e}_1 + \underbrace{\frac{1}{2}}_\mu\vec{e}_2 \right\| < d,
             \end{equation*}
-            Dus $\frac{1}{2}(\vec{\zeta}_1 + \vec{\zeta}_2) \in \mathcal{D}$ is een betere benadering van $\vec{v}$ dan $\vec{\zeta}_1$ en $\vec{\zeta}_2$, wat in tegenspraak is met de veronderstelling.
+            Dus $\frac{1}{2}(\vec{\zeta}_1 + \vec{\zeta}_2) \in \mathcal{D}$ is een betere benadering van $\vec{v}$ dan $\vec{\zeta}_1$, wat in tegenspraak is met de veronderstelling.
     \end{itemize}
 \end{prf}
 
@@ -168,7 +168,7 @@
     \end{enumerate}
     Men noemt $(\vec{x},\vec{y})$ het scalair product van $\vec{x}$ en $\vec{y}$. \\
 
-    \textbf{Opmerking:} Uit de derde eigenschap volgt dat $(\vec{x},\vec{x})$ reëel is. Hierdoor is het scalair product over het veld $\mathbb{R}$ symmetrisch.
+    \textbf{Opmerking:} Uit de derde eigenschap volgt dat $(\vec{x},\vec{x})$ reëel is, sinds $(\vec{x},\vec{x}) = \overline{(\vec{x},\vec{x})}$. Hierdoor is het gebruik van het $'>'$-teken in de vierde eigenschap gerechtvaardigd. Ook, indien de vectorruimte reëel is, dan is de derde eigenschap symmetrisch.
 \end{theo}
 
 \begin{lem}[Unitair impliceert genormeerd]{lem:unitair_impliceert_genormeerd}
@@ -176,7 +176,9 @@
     \begin{equation*}
         \| \vec{x} \| = \sqrt{(\vec{x},\vec{x})}
     \end{equation*}
-    voldoet aan de definitie van een norm.
+    voldoet aan de definitie van een norm. \\
+
+    \textbf{Opmerking:} Deze norm wordt de \emph{natuurlijke} of \emph{geïnduceerde norm} genoemd. 
 \end{lem}
 
 \newpage
@@ -196,11 +198,11 @@
 \end{prf}
 
 \begin{lem}[Genormeerd naar unitair]{lem:genormeerd_naar_unitair}
-    Een genormeerde vectorruimte is een unitaire ruimte met een scalair product dat voldoet aan Stelling~\ref{lem:unitair_impliceert_genormeerd}, als en slechts als de norm voldoet aan de parallellogramongelijkheid:
+    Een genormeerde vectorruimte is een unitaire ruimte met een scalair product dat voldoet aan Stelling~\ref{lem:unitair_impliceert_genormeerd}, als en slechts als de norm voldoet aan de \emph{parallellogramongelijkheid}:
     \begin{equation*}
         \| \vec{x} + \vec{y} \|^2 + \| \vec{x} - \vec{y} \|^2 = 2 \left(\| \vec{x} \|^2 + \| \vec{y} \|^2\right).
     \end{equation*}
-    \vspace{-0.5cm}
+    \textbf{Opnerking:} De zogenaamde parallellogramongelijkheid komt in het Euclidische vlak overeen met het feit dat de som van de kwadraten van de diagonalen van een parallellogram gelijk is aan de som van de kwadraten van de vier zijden.
 \end{lem}
 
 \begin{prf}[Genormeerd naar unitair]{prf:genormeerd_naar_unitair}
@@ -285,8 +287,10 @@
             \begin{align*}
                 v^*Gv 
                     &= \begin{bmatrix}
-                        v_1 & \cdots & v_n
-                    \end{bmatrix}
+                        v_1 \\
+                        \vdots \\
+                        v_n
+                    \end{bmatrix}^T
                     \begin{bmatrix}
                         (\vec{a}_1,\vec{a}_1) & \cdots & (\vec{a}_1,\vec{a}_n) \\
                         \vdots & \ddots & \vdots \\
@@ -296,14 +300,17 @@
                         v_1 \\ \vdots \\ v_n
                     \end{bmatrix} \\
                     &= \begin{bmatrix}
-                        v_1 & \cdots & v_n
-                    \end{bmatrix}
+                        v_1 \\
+                        \vdots \\
+                        v_n
+                    \end{bmatrix}^T
                     \begin{bmatrix}
                         (\vec{a}_1, v_1\vec{a}_1, + \cdots + v_n\vec{a}_n) \\
                         \vdots \\
                         (\vec{a}_n, v_1\vec{a}_1, + \cdots + v_n\vec{a}_n)
                     \end{bmatrix} \\
-                    &= \left(\sum_{i=1}^n v_i\vec{a}_i, \sum_{j=1}^n v_j\vec{a}_j\right) = \left\| \sum_{i=1}^n v_i\vec{a}_i \right\|^2.
+                    &= \left(\sum_{i=1}^n v_i\vec{a}_i, \sum_{j=1}^n v_j\vec{a}_j\right) 
+                    = \left\| \sum_{i=1}^n v_i\vec{a}_i \right\|^2.
             \end{align*}
             Als $\{\vec{a}_1,\ldots,\vec{a}_n\}$ lineair onafhankelijk zijn, dan geldt voor $v\neq 0$ dat $\sum_{i=1}^n v_i\vec{a}_i \neq 0$ en dus $v^*Gv > 0$. Dit bewijst dat $G$ positief definiet is.
     \end{itemize}
@@ -320,9 +327,9 @@
 \begin{prf}[Orthogonale projector]{prf:orthogonale_projector}
     ``$\Rightarrow$'': Als $\mathcal{R}(P)$ en $\mathcal{N}(P)$ orthogonaal zijn, dan is:
     \begin{equation*}
-        \forall \vec{v},\vec{w} \in V: \ (P\vec{v},(I-P)\vec{w}) = ((I-P)\vec{v},P\vec{w}) = \vec{0},
+        \forall \vec{v},\vec{w} \in V: \ (P\vec{v},(I-P)\vec{w}) = \vec{0} = ((I-P)\vec{v},P\vec{w}),
     \end{equation*}
-    waaruit volgt dat $(P\vec{v},\vec{w}) = (P\vec{v}, P\vec{w}) = (\vec{v},P\vec{w})$. \\
+    waaruit volgt, wegens lineariteit van het scalair product, dat $(P\vec{v},\vec{w}) = (P\vec{v}, P\vec{w}) = (\vec{v},P\vec{w})$. \\
     
     ``$\Leftarrow$'': Neem willekeurige $\vec{x} = P\vec{u} \in \mathcal{R}(P)$ en $\vec{y} \in \mathcal{N}(P)$. Dan geldt:
     \begin{equation*}
@@ -350,3 +357,8 @@
     \vspace{0.3cm}
     \textbf{Opmerking:} In vergelijking tot Algoritme~\ref{alg:Gram-Schmidt} zijn inwendige producten tussen vectoren in $\mathbb{C}^n$ vervangen door scalaire producten in $V$ en de Euclidische norm door de natuurlijke norm geïnduceerd door het scalair product, dit is $\|\cdot\| = \sqrt{(\cdot,\cdot)}$.
 \end{alg}
+
+\begin{lem}[Orthogonale projectiestelling]{lem:orthogonale_projectiestelling}
+    De beste benadering van vector $\vec{v}$ in een deelruimte $\mathcal{D}$ van een unitaire ruimte $V$ met betrekking tot de natuurlijke norm wordt gegeven door $ \vec{\hat{y}} = P_{\mathcal{D}}\vec{v},$
+    met $P_{\mathcal{D}}$ de orthogonale projector op $\mathcal{D}$. 
+\end{lem}
